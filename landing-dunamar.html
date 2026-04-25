@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proyecto Dunamar — Inversión Inmobiliaria · Concón, Chile</title>
+<meta name="description" content="22 pisos en Av. Costa de Montemar, Concón. ROI 91.8% en UF. Constructora Ferramar — 3 edificios entregados, 12 años de trayectoria. Inversión mínima UF 1,000.">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0d1b2a;--navy-mid:#162436;--navy-light:#1e3352;
+  --gold:#c9a84c;--gold-light:#e8c97e;--gold-pale:#f7f0dd;
+  --white:#ffffff;--off:#f8f7f4;
+  --g100:#f1f3f6;--g300:#cbd5e1;--g400:#94a3b8;--g500:#64748b;--g700:#334155;
+  --green:#15803d;--green-bg:#dcfce7;
+  --blue:#1d4ed8;--blue-bg:#dbeafe;
+  --red:#dc2626;--red-bg:#fee2e2;
+  --serif:'Georgia','Times New Roman',serif;
+  --sans:'Segoe UI',system-ui,-apple-system,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--g700);background:var(--white);overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;transition:all .3s}
+.nav.scrolled{background:rgba(13,27,42,.97);backdrop-filter:blur(12px);padding:14px 48px;box-shadow:0 2px 24px rgba(0,0,0,.3)}
+.nav-brand .name{font-size:18px;font-weight:700;color:var(--white);font-family:var(--serif);letter-spacing:.3px}
+.nav-brand .sub{font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--gold);font-weight:600}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,.75);transition:color .2s}
+.nav-links a:hover{color:var(--gold-light)}
+.nav-cta{background:var(--gold);color:var(--navy);padding:10px 22px;border-radius:6px;font-size:13px;font-weight:700;transition:background .2s;white-space:nowrap}
+.nav-cta:hover{background:var(--gold-light)}
+
+/* FLOATING CTA */
+.float-cta{position:fixed;bottom:28px;right:28px;z-index:998;background:var(--gold);color:var(--navy);padding:14px 24px;border-radius:50px;font-size:14px;font-weight:700;box-shadow:0 8px 32px rgba(201,168,76,.4);transition:all .3s;opacity:0;transform:translateY(20px);pointer-events:none}
+.float-cta.visible{opacity:1;transform:translateY(0);pointer-events:auto}
+.float-cta:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 12px 36px rgba(201,168,76,.5)}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:url('Proyecto Inmobiliaria/PRESENTACION DE OBRAS/Marina I/Fotos/TERRAZA/1.jpg');background-size:cover;background-position:center 30%;filter:brightness(.42)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(155deg,rgba(13,27,42,.78) 0%,rgba(13,27,42,.25) 55%,rgba(13,27,42,.5) 100%)}
+.hero-content{position:relative;z-index:1;max-width:800px;padding:140px 48px 100px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:var(--gold-light);margin-bottom:20px}
+.hero-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--gold)}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5vw,58px);font-weight:400;color:var(--white);line-height:1.1;margin-bottom:22px;letter-spacing:-.5px}
+.hero h1 em{font-style:normal;color:var(--gold-light)}
+.hero-desc{font-size:17px;color:rgba(255,255,255,.75);line-height:1.7;max-width:520px;margin-bottom:12px}
+.hero-min{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,.18);border:1px solid rgba(201,168,76,.35);border-radius:6px;padding:8px 16px;font-size:13px;color:var(--gold-light);font-weight:600;margin-bottom:32px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px}
+.btn-primary{background:var(--gold);color:var(--navy);padding:16px 32px;border-radius:6px;font-size:15px;font-weight:700;transition:all .2s;display:inline-block}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 8px 24px rgba(201,168,76,.35)}
+.btn-ghost{border:1.5px solid rgba(255,255,255,.35);color:var(--white);padding:16px 32px;border-radius:6px;font-size:15px;font-weight:600;transition:all .2s;display:inline-block}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold-light)}
+.hero-stats{display:flex;gap:40px;flex-wrap:wrap;padding-top:28px;border-top:1px solid rgba(255,255,255,.12)}
+.hero-stat .num{font-family:var(--serif);font-size:32px;color:var(--gold-light);display:block;line-height:1;margin-bottom:4px}
+.hero-stat .lbl{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.45)}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.35);font-size:11px;text-transform:uppercase;letter-spacing:2px;animation:bob 2s infinite;display:flex;flex-direction:column;align-items:center;gap:6px}
+.hero-scroll::after{content:'↓';font-size:16px}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+
+/* TRUST BAR */
+.trust-bar{background:var(--navy);padding:18px 0}
+.trust-inner{max-width:1100px;margin:0 auto;padding:0 48px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap}
+.ti{display:flex;align-items:center;gap:10px;padding:8px 28px;border-right:1px solid rgba(255,255,255,.08)}
+.ti:last-child{border-right:none}
+.ti span{font-size:13px;font-weight:500;color:rgba(255,255,255,.7)}
+.ti strong{color:var(--gold-light)}
+
+/* PROCESO */
+.proceso{background:var(--off);padding:80px 48px}
+.sec-inner{max-width:1100px;margin:0 auto}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;color:var(--gold);margin-bottom:14px}
+.eyebrow::before{content:'';display:block;width:22px;height:2px;background:var(--gold)}
+h2{font-family:var(--serif);font-size:clamp(26px,3.5vw,40px);font-weight:400;color:var(--navy);line-height:1.15;margin-bottom:14px;letter-spacing:-.3px}
+.sec-lead{font-size:16px;color:var(--g500);line-height:1.7;max-width:560px;margin-bottom:48px}
+.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.paso{background:var(--white);padding:36px 32px;border:1px solid var(--g300);position:relative}
+.paso:first-child{border-radius:12px 0 0 12px}
+.paso:last-child{border-radius:0 12px 12px 0}
+.paso-num{font-family:var(--serif);font-size:60px;color:var(--gold-pale);font-weight:400;line-height:1;margin-bottom:16px;display:block}
+.paso h3{font-size:17px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.paso p{font-size:13px;color:var(--g500);line-height:1.6}
+.paso .tiempo{margin-top:14px;font-size:12px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:1px}
+.paso-arrow{position:absolute;right:-14px;top:50%;transform:translateY(-50%);width:28px;height:28px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--navy);font-weight:700;font-size:12px;z-index:1}
+
+/* TRACK RECORD */
+.track{background:var(--white);padding:100px 48px}
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;border-radius:14px;overflow:hidden;margin-bottom:48px;box-shadow:0 16px 48px rgba(0,0,0,.1)}
+.pc{position:relative;overflow:hidden;background:var(--navy)}
+.pc img{width:100%;height:100%;object-fit:cover;transition:transform .6s;filter:brightness(.62)}
+.pc:hover img{transform:scale(1.04)}
+.pc-over{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,27,42,.88) 0%,transparent 55%);display:flex;flex-direction:column;justify-content:flex-end;padding:22px}
+.pc-over h3{font-family:var(--serif);font-size:19px;font-weight:400;color:var(--white);margin-bottom:4px}
+.pc-over p{font-size:11px;color:var(--gold-light);font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.pc.wide{grid-column:span 2;aspect-ratio:16/6}
+.pc:not(.wide){aspect-ratio:4/3}
+.track-nums{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.tn{text-align:center;padding:24px 16px;background:var(--off);border-radius:12px;border:1px solid var(--g300)}
+.tn .n{font-family:var(--serif);font-size:34px;color:var(--navy);display:block;margin-bottom:4px}
+.tn .l{font-size:12px;color:var(--g500)}
+
+/* PROYECTO */
+.proyecto{background:var(--off);padding:100px 48px}
+.proy-layout{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.num-row{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--g100)}
+.num-row:last-child{border-bottom:none}
+.num-row .k{font-size:14px;color:var(--g500)}
+.num-row .v{font-family:var(--serif);font-size:21px;color:var(--navy);text-align:right}
+.num-row .v small{font-size:12px;color:var(--g400);font-family:var(--sans);margin-left:4px}
+.num-row.hl .v{color:var(--gold);font-size:26px}
+.map-card{background:var(--navy);border-radius:14px;overflow:hidden;margin-bottom:20px}
+.map-iframe-wrap{width:100%;aspect-ratio:16/10;position:relative}
+.map-iframe-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.map-body{padding:18px 22px}
+.map-body .addr{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gold-light);margin-bottom:6px;display:block}
+.map-body h4{font-family:var(--serif);font-size:17px;color:var(--white);margin-bottom:6px}
+.map-body p{font-size:12px;color:rgba(255,255,255,.55);line-height:1.5}
+.spec-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin-top:20px}
+.spec-list li{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--g700)}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--gold);flex-shrink:0}
+
+/* COMPARATIVA */
+.comparativa{background:var(--navy);padding:80px 48px;position:relative;overflow:hidden}
+.comparativa::before{content:'';position:absolute;top:-150px;right:-150px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.07) 0%,transparent 70%);pointer-events:none}
+.comparativa .eyebrow{color:var(--gold)}
+.comparativa h2{color:var(--white)}
+.comparativa .sec-lead{color:rgba(255,255,255,.55)}
+.comp-table{width:100%;border-collapse:collapse;font-size:14px}
+.comp-table th{padding:12px 20px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:1px;font-weight:700;font-family:var(--sans)}
+.comp-table th:first-child{color:rgba(255,255,255,.4);background:transparent}
+.comp-table th.col-alt{background:rgba(255,255,255,.05);color:rgba(255,255,255,.6);border-radius:0}
+.comp-table th.col-dunamar{background:var(--gold);color:var(--navy);border-radius:8px 8px 0 0}
+.comp-table td{padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.7)}
+.comp-table tr:last-child td{border-bottom:none}
+.comp-table td:first-child{color:rgba(255,255,255,.45);font-size:13px}
+.comp-table td.col-alt{background:rgba(255,255,255,.03)}
+.comp-table td.col-dunamar{background:rgba(201,168,76,.12);color:var(--gold-light);font-weight:700}
+.comp-table .better{color:var(--gold-light);font-weight:700}
+.comp-table .worse{color:rgba(255,255,255,.35)}
+
+/* RETORNO */
+.retorno{background:var(--white);padding:100px 48px}
+.ret-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:32px}
+.ret-card{background:var(--navy);border-radius:14px;padding:36px 28px;text-align:center}
+.ret-card .ri{font-size:30px;margin-bottom:14px}
+.ret-card .rn{font-family:var(--serif);font-size:44px;color:var(--gold-light);display:block;line-height:1;margin-bottom:4px}
+.ret-card .rl{font-size:12px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:1px}
+.ret-card .rd{font-size:13px;color:rgba(255,255,255,.55);margin-top:12px;line-height:1.5}
+.ret-note{background:var(--gold-pale);border:1px solid rgba(201,168,76,.3);border-radius:10px;padding:20px 24px;font-size:14px;color:var(--g700);line-height:1.6;display:flex;gap:14px}
+.ret-note .ni{font-size:18px;flex-shrink:0}
+.timeline-bar{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:40px;border-radius:12px;overflow:hidden}
+.tl-step{background:var(--off);border:1px solid var(--g300);padding:20px;text-align:center;position:relative}
+.tl-step:not(:last-child)::after{content:'→';position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-weight:700;color:var(--gold);font-size:16px;z-index:1;background:var(--off);padding:2px 0}
+.tl-step .ts-num{font-family:var(--serif);font-size:22px;color:var(--navy);display:block;margin-bottom:4px}
+.tl-step .ts-label{font-size:12px;color:var(--g500);line-height:1.4}
+
+/* UNIDADES */
+.unidades{background:var(--off);padding:100px 48px}
+.u-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.u-card{background:var(--white);border-radius:12px;padding:22px;border:1px solid var(--g300);transition:all .2s}
+.u-card:hover{border-color:var(--gold);box-shadow:0 4px 20px rgba(201,168,76,.15)}
+.u-card .tipo{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);margin-bottom:6px}
+.u-card h4{font-family:var(--serif);font-size:19px;color:var(--navy);margin-bottom:2px}
+.u-card .sup{font-size:12px;color:var(--g400);margin-bottom:14px}
+.u-div{height:1px;background:var(--g100);margin:12px 0}
+.u-row{display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px}
+.u-row .uk{color:var(--g400)}
+.u-row .uv{font-weight:700;color:var(--navy)}
+.u-total{grid-column:span 3;background:var(--navy);border-radius:12px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.u-total h4{font-family:var(--serif);font-size:20px;color:var(--white)}
+.u-total p{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
+.u-total .tot{font-family:var(--serif);font-size:32px;color:var(--gold-light)}
+
+/* AMENIDADES */
+.amenidades{background:var(--white);padding:100px 48px}
+.amen-mosaic{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:290px 290px;gap:3px;border-radius:14px;overflow:hidden;margin-bottom:40px;box-shadow:0 12px 40px rgba(0,0,0,.1)}
+.mi{position:relative;overflow:hidden;background:var(--navy)}
+.mi img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.mi:hover img{transform:scale(1.04)}
+.mi.tall{grid-row:span 2}
+.mi .cap{position:absolute;bottom:14px;left:14px;background:rgba(13,27,42,.8);color:var(--gold-light);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:4px 10px;border-radius:20px;backdrop-filter:blur(4px)}
+.amen-list{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.ai{display:flex;align-items:flex-start;gap:12px}
+.ai-icon{width:42px;height:42px;border-radius:10px;background:var(--gold-pale);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+.ai h4{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:2px}
+.ai p{font-size:12px;color:var(--g400);line-height:1.4}
+
+/* EXTERIOR */
+.exterior{background:var(--navy);padding:72px 48px}
+.exterior h2{color:var(--white)}
+.exterior .sec-lead{color:rgba(255,255,255,.55)}
+.ext-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.ext-item{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:24px}
+.ext-item .ei-icon{font-size:28px;margin-bottom:12px}
+.ext-item h4{font-size:15px;font-weight:700;color:var(--white);margin-bottom:8px}
+.ext-item p{font-size:13px;color:rgba(255,255,255,.55);line-height:1.6}
+.ext-item .ei-tag{margin-top:10px;display:inline-block;font-size:11px;font-weight:700;color:var(--navy);background:var(--gold);padding:4px 10px;border-radius:20px}
+
+/* SEGURIDAD */
+.seguridad{background:var(--off);padding:100px 48px}
+.seg-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.seg-item{background:var(--white);border-radius:12px;padding:24px;display:flex;gap:16px;border:1px solid var(--g300)}
+.seg-n{width:38px;height:38px;border-radius:50%;background:var(--navy);color:var(--gold-light);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0}
+.seg-item h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.seg-item p{font-size:13px;color:var(--g500);line-height:1.6}
+
+/* FAQ */
+.faq{background:var(--white);padding:100px 48px}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
+.faq-item{padding:22px 0;border-bottom:1px solid var(--g100);cursor:pointer}
+.faq-item:last-child{border-bottom:none}
+.faq-q{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.faq-q span{font-size:15px;font-weight:700;color:var(--navy);line-height:1.4}
+.faq-toggle{width:24px;height:24px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;transition:transform .2s}
+.faq-item.open .faq-toggle{transform:rotate(45deg)}
+.faq-a{font-size:14px;color:var(--g500);line-height:1.7;margin-top:12px;display:none}
+.faq-item.open .faq-a{display:block}
+
+/* VIDEO */
+.video-sec{background:var(--off);padding:80px 48px}
+.video-box{max-width:720px;margin:0 auto;background:var(--navy);border-radius:16px;overflow:hidden}
+.video-placeholder{aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);cursor:pointer;position:relative}
+.video-placeholder::after{content:'';position:absolute;inset:0;background:url('Proyecto Inmobiliaria/PRESENTACION DE OBRAS/Marina I/Fotos/TERRAZA/2.jpg') center/cover;opacity:.25}
+.play-btn{width:72px;height:72px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:26px;position:relative;z-index:1;box-shadow:0 8px 32px rgba(201,168,76,.4)}
+.video-placeholder h3{font-family:var(--serif);font-size:24px;color:var(--white);position:relative;z-index:1;text-align:center}
+.video-placeholder p{font-size:14px;color:rgba(255,255,255,.55);position:relative;z-index:1;text-align:center;max-width:360px;line-height:1.5}
+.video-box-footer{padding:20px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.video-box-footer span{font-size:13px;color:rgba(255,255,255,.5)}
+.video-box-footer a{font-size:13px;font-weight:700;color:var(--gold-light);border:1px solid rgba(201,168,76,.4);padding:6px 14px;border-radius:6px}
+
+/* CONTACTO */
+.cta-sec{background:var(--white);padding:100px 48px}
+.cta-layout{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.cta-left h2{margin-bottom:14px}
+.cta-left p{font-size:15px;color:var(--g500);line-height:1.7;margin-bottom:28px}
+.cta-perks{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.cta-perks li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--g700)}
+.cta-perks li::before{content:'✓';color:var(--green);font-weight:800;flex-shrink:0}
+.ext-note{background:var(--blue-bg);border:1px solid #93c5fd;border-radius:10px;padding:16px 20px;font-size:13px;color:#1e3a5f;line-height:1.6;display:flex;gap:12px}
+.ext-note .en-icon{font-size:18px;flex-shrink:0}
+.cta-form{background:var(--navy);border-radius:16px;padding:36px 32px}
+.cta-form h3{font-family:var(--serif);font-size:22px;color:var(--white);margin-bottom:4px}
+.cta-form .sub{font-size:13px;color:rgba(255,255,255,.45);margin-bottom:24px}
+.fg{margin-bottom:14px}
+.fg label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.5);margin-bottom:5px}
+.fg input,.fg select{width:100%;padding:12px 14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:var(--white);font-size:14px;font-family:var(--sans);outline:none;transition:border-color .2s;-webkit-appearance:none}
+.fg select option{background:var(--navy);color:var(--white)}
+.fg input:focus,.fg select:focus{border-color:var(--gold)}
+.fg input::placeholder{color:rgba(255,255,255,.25)}
+.form-submit{width:100%;padding:15px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-size:15px;font-weight:700;font-family:var(--sans);cursor:pointer;transition:all .2s;margin-top:6px}
+.form-submit:hover{background:var(--gold-light);transform:translateY(-1px)}
+.form-note{text-align:center;font-size:11px;color:rgba(255,255,255,.3);margin-top:12px}
+.urgency-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(220,38,38,.15);border:1px solid rgba(220,38,38,.3);border-radius:6px;padding:8px 14px;font-size:12px;font-weight:700;color:#fca5a5;margin-bottom:20px}
+.form-success{display:none;text-align:center;padding:40px 20px}
+.form-success h4{font-family:var(--serif);font-size:24px;color:var(--gold-light);margin-bottom:10px}
+.form-success p{font-size:14px;color:rgba(255,255,255,.55)}
+
+/* FOOTER */
+footer{background:var(--navy-mid);padding:48px}
+.ft-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.ft-brand .name{font-family:var(--serif);font-size:22px;color:var(--white)}
+.ft-brand .sub{font-size:12px;color:rgba(255,255,255,.35);margin-top:2px}
+.ft-info{text-align:right}
+.ft-info p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.7}
+.ft-info a{color:var(--gold-light)}
+.ft-legal{max-width:1100px;margin:28px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.05);font-size:11px;color:rgba(255,255,255,.2);line-height:1.6}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  section,.track,.proyecto,.comparativa,.retorno,.unidades,.amenidades,.exterior,.seguridad,.faq,.video-sec,.cta-sec{padding:72px 24px}
+  .trust-inner,.sec-inner{padding:0 24px}
+  .nav,.nav.scrolled{padding:16px 24px}
+  .nav-links{display:none}
+  .hero-content{padding:110px 24px 80px}
+  .hero-stats{gap:24px}
+  .pasos{grid-template-columns:1fr}
+  .paso:first-child,.paso:last-child{border-radius:12px}
+  .paso-arrow{display:none}
+  .proj-grid{grid-template-columns:1fr}
+  .pc.wide{grid-column:span 1;aspect-ratio:4/3}
+  .proy-layout{grid-template-columns:1fr}
+  .comp-table{font-size:12px}
+  .comp-table th,.comp-table td{padding:10px 12px}
+  .ret-grid{grid-template-columns:1fr}
+  .u-grid{grid-template-columns:1fr 1fr}
+  .u-total{grid-column:span 2}
+  .amen-mosaic{grid-template-columns:1fr;grid-template-rows:auto}
+  .mi.tall{grid-row:span 1}
+  .amen-list{grid-template-columns:1fr 1fr}
+  .ext-grid{grid-template-columns:1fr}
+  .seg-grid{grid-template-columns:1fr}
+  .faq-grid{grid-template-columns:1fr}
+  .cta-layout{grid-template-columns:1fr}
+  .track-nums{grid-template-columns:1fr 1fr}
+  .timeline-bar{grid-template-columns:1fr 1fr 1fr}
+  .ft-inner{flex-direction:column;align-items:flex-start}
+  .ft-info{text-align:left}
+}
+@media(max-width:600px){
+  .hero h1{font-size:30px}
+  .u-grid{grid-template-columns:1fr}
+  .u-total{grid-column:span 1}
+  .amen-list{grid-template-columns:1fr}
+  .timeline-bar{grid-template-columns:1fr}
+  .trust-inner{gap:0}
+  .ti{padding:6px 14px;font-size:12px}
+  .float-cta{bottom:16px;right:16px;padding:12px 18px;font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<!-- FLOATING CTA -->
+<a href="#contacto" class="float-cta" id="floatCta">Quiero información →</a>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-brand">
+    <span class="name">Ferramar</span>
+    <span class="sub">Proyecto Dunamar · Concón</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#por-que">Por qué invertir</a></li>
+    <li><a href="#proyecto">El proyecto</a></li>
+    <li><a href="#retorno">Retorno</a></li>
+    <li><a href="#seguridad">Garantías</a></li>
+    <li><a href="#faq">Preguntas</a></li>
+  </ul>
+  <a href="#contacto" class="nav-cta">Quiero información</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Av. Costa de Montemar · Concón · Región de Valparaíso</div>
+
+    <h1>Ferramar abre la ronda de socios financistas de Dunamar — antes del inicio de obra.</h1>
+
+    <p style="font-size:clamp(17px,1.6vw,21px);color:rgba(255,255,255,.7);line-height:1.5;margin-bottom:8px;font-weight:400;border-left:2px solid var(--gold);padding-left:16px">
+      Entre el costo de construir y el precio de venta hay <em style="font-style:normal;color:var(--gold-light)">UF 406,000 de diferencia.</em>
+    </p>
+    <p style="font-size:clamp(15px,1.4vw,18px);color:rgba(255,255,255,.45);margin-bottom:36px;padding-left:18px">Eso es lo que está en juego.</p>
+
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-primary">Quiero conocer los detalles →</a>
+      <a href="#proyecto" class="btn-ghost">Ver el proyecto</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="num">91.8%</span><span class="lbl">ROI en UF · ~3 años · proporcional al capital</span></div>
+      <div class="hero-stat"><span class="num">~30%</span><span class="lbl">Retorno anualizado en UF</span></div>
+      <div class="hero-stat"><span class="num">150</span><span class="lbl">Departamentos · 22 pisos</span></div>
+      <div class="hero-stat"><span class="num">3</span><span class="lbl">Edificios previos entregados</span></div>
+    </div>
+  </div>
+  <div class="hero-scroll">Descubrir</div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="ti"><span>🏗️</span><span><strong>Marina I y II</strong> entregados en la misma avenida</span></div>
+    <div class="ti"><span>📄</span><span>Terreno <strong>5,312 m²</strong> ya adquirido</span></div>
+    <div class="ti"><span>🌊</span><span>A <strong>metros del Pacífico</strong> · Concón</span></div>
+    <div class="ti"><span>🔒</span><span>Estructura legal <strong>documentada</strong></span></div>
+    <div class="ti"><span>✈️</span><span>Inversión <strong>100% remota</strong> disponible</span></div>
+  </div>
+</div>
+
+<!-- PROCESO -->
+<section class="proceso" id="proceso">
+  <div class="sec-inner">
+    <div class="eyebrow">Cómo funciona</div>
+    <h2>Tres pasos para invertir en Dunamar</h2>
+    <p class="sec-lead">El proceso está diseñado para ser simple, transparente y 100% documentado. Todo comienza con una conversación.</p>
+    <div class="pasos" style="position:relative">
+      <div class="paso">
+        <span class="paso-num">01</span>
+        <h3>Conversación inicial</h3>
+        <p>Llenas el formulario. En 24 horas el equipo te llama. 20 minutos de conversación para entender tu perfil y resolver todas las dudas. Sin compromiso.</p>
+        <div class="tiempo">⏱ 24–48 horas</div>
+        <div class="paso-arrow">→</div>
+      </div>
+      <div class="paso">
+        <span class="paso-num">02</span>
+        <h3>Due diligence y documentos</h3>
+        <p>Acceso completo al data room: modelo financiero, permisos, contratos de proyectos previos, tasación del terreno. Tu abogado revisa. Si quieres, organiza una visita a los edificios Marina.</p>
+        <div class="tiempo">⏱ 1–3 semanas</div>
+        <div class="paso-arrow">→</div>
+      </div>
+      <div class="paso">
+        <span class="paso-num">03</span>
+        <h3>Firma e inicio</h3>
+        <p>Contrato notarial. Transferencia a cuenta dedicada del proyecto. A partir de ahí: reporte mensual de avance, fotos de obra, estado de ventas. Transparencia total.</p>
+        <div class="tiempo">⏱ 1–5 días</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRACK RECORD -->
+<section class="track" id="ferramar">
+  <div class="sec-inner">
+    <div class="eyebrow">Por qué Ferramar</div>
+    <h2>No es una promesa.<br>Son dos edificios que puedes visitar hoy.</h2>
+    <p class="sec-lead">Marina I y Marina II están a metros del terreno Dunamar. Terminados, habitados, construidos por el mismo equipo. Párate frente a ellos y verás lo que vas a financiar.</p>
+    <div class="proj-grid">
+      <div class="pc wide">
+        <img src="Proyecto Inmobiliaria/PRESENTACION DE OBRAS/Marina I/Fotos/TERRAZA/1.jpg" alt="Terraza panorámica con vista al Pacífico — Marina Montemar" loading="lazy">
+        <div class="pc-over">
+          <h3>Vista al Pacífico desde el piso 20+</h3>
+          <p>Edificio Marina Montemar · Av. Costa de Montemar, Concón · Entregado 2019</p>
+        </div>
+      </div>
+      <div class="pc">
+        <img src="Proyecto Inmobiliaria/PRESENTACION DE OBRAS/Marina I/Fotos/ENTRADA EDIFICIO/1.jpg" alt="Lobby Marina I" loading="lazy">
+        <div class="pc-over">
+          <h3>Lobby · Edificio Marina I</h3>
+          <p>Av. Costa de Montemar #379 · 24 pisos</p>
+        </div>
+      </div>
+      <div class="pc">
+        <img src="Proyecto Inmobiliaria/PRESENTACION DE OBRAS/Marina I/Fotos/GIMNASIO/1.jpg" alt="Gimnasio con vista al mar" loading="lazy">
+        <div class="pc-over">
+          <h3>Gimnasio · Vista al mar</h3>
+          <p>Estándar de amenidades Ferramar</p>
+        </div>
+      </div>
+    </div>
+    <div class="track-nums">
+      <div class="tn"><span class="n">3</span><span class="l">Edificios completados y entregados</span></div>
+      <div class="tn"><span class="n">12</span><span class="l">Años operando en la V Región</span></div>
+      <div class="tn"><span class="n">300+</span><span class="l">Familias en edificios Ferramar</span></div>
+      <div class="tn"><span class="n">0</span><span class="l">Proyectos con atrasos en entrega</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE PROYECTO ANTERIOR -->
+<section style="background:var(--navy);color:#fff;padding:70px 0" id="historial">
+  <div class="sec-inner">
+    <div class="eyebrow" style="color:var(--gold)">Historial verificable</div>
+    <h2 style="color:#fff">Del terreno vacío al edificio habitado.<br><span style="color:var(--gold)">El mismo camino que recorrerá Dunamar.</span></h2>
+    <p style="color:rgba(255,255,255,.65);max-width:680px;font-size:1rem;line-height:1.8;margin-bottom:48px">No te pedimos que confíes en una promesa. Te mostramos lo que ya ocurrió. Edificio Marina I siguió exactamente el mismo proceso que seguirá Dunamar — desde un terreno vacío en Av. Costa de Montemar hasta un edificio terminado y habitado.</p>
+
+    <!-- ANTES / DESPUÉS — el argumento visual más potente -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;border-radius:16px;overflow:hidden;margin-bottom:48px;box-shadow:0 0 0 1px rgba(201,168,76,.3)">
+      <div>
+        <div style="background:rgba(255,255,255,.1);padding:8px 16px;font-size:0.7rem;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;text-align:center">ANTES · Terreno vacío Marina I</div>
+        <div style="position:relative">
+          <img src="Proyecto Inmobiliaria/PRESENTACION DE OBRAS/Marina I/Fotos/TERRENO/1.jpg"
+               alt="Terreno Marina I vacío antes de la construcción"
+               style="width:100%;height:260px;object-fit:cover;display:block"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div style="display:none;height:260px;background:rgba(255,255,255,.05);align-items:center;justify-content:center;flex-direction:column;gap:10px;text-align:center;padding:24px">
+            <span style="font-size:3rem;opacity:.3">📷</span>
+            <span style="font-size:0.82rem;color:rgba(255,255,255,.35);line-height:1.5">Foto terreno vacío — antes de la construcción</span>
+            <div style="background:#fff3cd;border:2px solid #e53e3e;border-radius:6px;padding:6px 10px;font-size:0.7rem;color:#c53030;font-weight:700">⚠️ REEMPLAZAR CON FOTO REAL</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="background:var(--gold);padding:8px 16px;font-size:0.7rem;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.1em;text-align:center">DESPUÉS · Marina I — habitado hoy</div>
+        <div style="position:relative">
+          <img src="Proyecto Inmobiliaria/PRESENTACION DE OBRAS/Marina I/Fotos/TERRAZA/2.jpg"
+               alt="Marina I terminado y habitado hoy"
+               style="width:100%;height:260px;object-fit:cover;display:block"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div style="display:none;height:260px;background:rgba(201,168,76,.08);align-items:center;justify-content:center;flex-direction:column;gap:10px;text-align:center;padding:24px">
+            <span style="font-size:3rem;opacity:.4">🏢</span>
+            <span style="font-size:0.82rem;color:rgba(255,255,255,.35);line-height:1.5">Foto del edificio terminado — Marina I hoy</span>
+            <div style="background:#fff3cd;border:2px solid #e53e3e;border-radius:6px;padding:6px 10px;font-size:0.7rem;color:#c53030;font-weight:700">⚠️ REEMPLAZAR CON FOTO REAL</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIMELINE HORIZONTAL -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:0;position:relative;margin-bottom:48px">
+      <!-- Línea conectora -->
+      <div style="position:absolute;top:28px;left:5%;right:5%;height:2px;background:rgba(201,168,76,.35);z-index:0"></div>
+
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 8px;z-index:1">
+        <div style="width:56px;height:56px;border-radius:50%;background:rgba(201,168,76,.15);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:14px">🌿</div>
+        <div style="font-weight:700;color:var(--gold);font-size:0.8rem;margin-bottom:4px">2016–2017</div>
+        <div style="font-weight:700;color:#fff;font-size:0.88rem;margin-bottom:6px">Terreno vacío</div>
+        <p style="font-size:0.78rem;color:rgba(255,255,255,.55);line-height:1.5">Solo suelo en Av. Costa de Montemar. Ferramar adquiere el lote con la misma lógica de Dunamar: posición, cabida, mercado.</p>
+        <div style="margin-top:10px;background:rgba(255,255,255,.06);border-radius:8px;padding:8px 10px;width:100%">
+          <div style="font-size:0.7rem;color:rgba(255,255,255,.4);margin-bottom:4px">FOTO</div>
+          <img src="Proyecto Inmobiliaria/PRESENTACION DE OBRAS/Marina I/Fotos/TERRENO/1.jpg"
+               style="width:100%;border-radius:6px;max-height:80px;object-fit:cover"
+               alt="Terreno Marina I vacío"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <div style="display:none;height:60px;background:rgba(255,255,255,.06);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;color:rgba(255,255,255,.3)">Foto terreno vacío<br>⚠️ REEMPLAZAR</div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 8px;z-index:1">
+        <div style="width:56px;height:56px;border-radius:50%;background:rgba(201,168,76,.15);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:14px">📋</div>
+        <div style="font-weight:700;color:var(--gold);font-size:0.8rem;margin-bottom:4px">2017</div>
+        <div style="font-weight:700;color:#fff;font-size:0.88rem;margin-bottom:6px">Permisos y diseño</div>
+        <p style="font-size:0.78rem;color:rgba(255,255,255,.55);line-height:1.5">Arquitecto diseña el proyecto. Municipalidad aprueba. Permiso de edificación obtenido. Pre-venta de unidades en paralelo.</p>
+        <div style="margin-top:10px;background:rgba(255,255,255,.06);border-radius:8px;padding:8px 10px;width:100%">
+          <div style="height:60px;background:rgba(255,255,255,.06);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;color:rgba(255,255,255,.3);text-align:center">Foto/doc permisos<br>⚠️ REEMPLAZAR</div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 8px;z-index:1">
+        <div style="width:56px;height:56px;border-radius:50%;background:rgba(201,168,76,.15);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:14px">🏗️</div>
+        <div style="font-weight:700;color:var(--gold);font-size:0.8rem;margin-bottom:4px">2017–2018</div>
+        <div style="font-weight:700;color:#fff;font-size:0.88rem;margin-bottom:6px">Construcción</div>
+        <p style="font-size:0.78rem;color:rgba(255,255,255,.55);line-height:1.5">La constructora levanta el edificio piso a piso. Inspección técnica independiente en cada etapa. Reportes mensuales a inversores.</p>
+        <div style="margin-top:10px;background:rgba(255,255,255,.06);border-radius:8px;padding:8px 10px;width:100%">
+          <div style="font-size:0.7rem;color:rgba(255,255,255,.4);margin-bottom:4px">FOTO OBRA EN AVANCE</div>
+          <div style="height:60px;background:rgba(255,255,255,.06);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;color:rgba(255,255,255,.3);text-align:center">Foto obra en progreso<br>⚠️ REEMPLAZAR</div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 8px;z-index:1">
+        <div style="width:56px;height:56px;border-radius:50%;background:rgba(201,168,76,.15);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:14px">🔑</div>
+        <div style="font-weight:700;color:var(--gold);font-size:0.8rem;margin-bottom:4px">2019</div>
+        <div style="font-weight:700;color:#fff;font-size:0.88rem;margin-bottom:6px">Entrega sin atrasos</div>
+        <p style="font-size:0.78rem;color:rgba(255,255,255,.55);line-height:1.5">Recepción municipal. Entrega de llaves a compradores. Inversores reciben su retorno. Sin atrasos. Sin deudas.</p>
+        <div style="margin-top:10px;background:rgba(255,255,255,.06);border-radius:8px;padding:8px 10px;width:100%">
+          <div style="font-size:0.7rem;color:rgba(255,255,255,.4);margin-bottom:4px">FOTO ENTREGA</div>
+          <div style="height:60px;background:rgba(255,255,255,.06);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;color:rgba(255,255,255,.3);text-align:center">Foto entrega de llaves<br>⚠️ REEMPLAZAR</div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 8px;z-index:1">
+        <div style="width:56px;height:56px;border-radius:50%;background:var(--gold);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:14px">🏠</div>
+        <div style="font-weight:700;color:var(--gold);font-size:0.8rem;margin-bottom:4px">Hoy</div>
+        <div style="font-weight:700;color:#fff;font-size:0.88rem;margin-bottom:6px">Habitado y visitable</div>
+        <p style="font-size:0.78rem;color:rgba(255,255,255,.55);line-height:1.5">Marina I está en pie, habitado y a metros del terreno Dunamar. Puedes ir a verlo esta semana antes de decidir.</p>
+        <div style="margin-top:10px;background:rgba(255,255,255,.06);border-radius:8px;padding:8px 10px;width:100%">
+          <img src="Proyecto Inmobiliaria/PRESENTACION DE OBRAS/Marina I/Fotos/TERRAZA/2.jpg"
+               style="width:100%;border-radius:6px;max-height:80px;object-fit:cover"
+               alt="Marina I terminado hoy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div style="display:none;height:60px;background:rgba(255,255,255,.06);border-radius:6px;align-items:center;justify-content:center;font-size:0.7rem;color:rgba(255,255,255,.3);text-align:center">Foto edificio hoy<br>⚠️ REEMPLAZAR</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NÚMEROS REALES MARINA I -->
+    <div style="margin-bottom:20px">
+      <div style="font-size:0.7rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px">Los números de Marina I — el caso real</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px">
+        <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:16px;text-align:center">
+          <div style="font-size:1.8rem;font-weight:800;color:var(--gold)">⚠️</div>
+          <div style="font-size:0.72rem;color:rgba(255,255,255,.5);margin-top:4px;line-height:1.4">Departamentos<br>entregados</div>
+          <div style="font-size:0.62rem;color:#f87171;margin-top:4px;font-weight:600">REEMPLAZAR</div>
+        </div>
+        <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:16px;text-align:center">
+          <div style="font-size:1.8rem;font-weight:800;color:#4ade80">0</div>
+          <div style="font-size:0.72rem;color:rgba(255,255,255,.5);margin-top:4px;line-height:1.4">Días de atraso<br>en la entrega</div>
+        </div>
+        <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:16px;text-align:center">
+          <div style="font-size:1.8rem;font-weight:800;color:var(--gold)">⚠️</div>
+          <div style="font-size:0.72rem;color:rgba(255,255,255,.5);margin-top:4px;line-height:1.4">ROI real<br>para inversores</div>
+          <div style="font-size:0.62rem;color:#f87171;margin-top:4px;font-weight:600">REEMPLAZAR</div>
+        </div>
+        <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:16px;text-align:center">
+          <div style="font-size:1.8rem;font-weight:800;color:var(--gold)">⚠️%</div>
+          <div style="font-size:0.72rem;color:rgba(255,255,255,.5);margin-top:4px;line-height:1.4">Unidades vendidas<br>antes de entrega</div>
+          <div style="font-size:0.62rem;color:#f87171;margin-top:4px;font-weight:600">REEMPLAZAR</div>
+        </div>
+        <div style="background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.3);border-radius:10px;padding:16px;text-align:center">
+          <div style="font-size:1.8rem;font-weight:800;color:var(--gold)">Hoy</div>
+          <div style="font-size:0.72rem;color:rgba(255,255,255,.5);margin-top:4px;line-height:1.4">Habitado y<br>visitable en persona</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TESTIMONIO PLACEHOLDER -->
+    <div style="background:rgba(255,255,255,.04);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:18px 22px;margin-bottom:20px">
+      <p style="font-style:italic;color:rgba(255,255,255,.6);font-size:0.9rem;line-height:1.7;margin-bottom:8px">"[⚠️ REEMPLAZAR CON TESTIMONIO REAL — Frase de un propietario o inversor de Marina I sobre su experiencia con Ferramar. Ejemplo: 'La entrega fue exactamente en el plazo prometido, sin sorpresas. El edificio superó mis expectativas en acabados y vista al mar.']"</p>
+      <div style="font-size:0.78rem;color:var(--gold);font-weight:600">— [Nombre], [Propietario / Inversor] Marina I · Concón</div>
+      <div style="background:#fff3cd;border:2px solid #e53e3e;border-radius:6px;padding:6px 10px;font-size:0.7rem;color:#c53030;font-weight:700;margin-top:10px;display:inline-flex;align-items:center;gap:6px">⚠️ CONSEGUIR TESTIMONIO REAL — escrito o video 30s</div>
+    </div>
+
+    <!-- CTA CASO COMPLETO -->
+    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:16px">
+      <a href="caso-estudio-marina-i.html" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--navy);font-weight:700;font-size:0.85rem;padding:11px 22px;border-radius:8px;text-decoration:none">📋 Ver caso completo con todos los números →</a>
+      <a href="#contacto" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;font-weight:600;font-size:0.85rem;padding:11px 22px;border-radius:8px;text-decoration:none;border:1px solid rgba(255,255,255,.3)">Agendar visita a Marina I</a>
+    </div>
+
+    <!-- CTA VISITA -->
+    <div style="background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.4);border-radius:12px;padding:24px 28px;display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+      <div style="font-size:2rem;flex-shrink:0">👀</div>
+      <div style="flex:1;min-width:220px">
+        <p style="font-weight:700;color:#fff;margin-bottom:4px">Dunamar seguirá este mismo camino. Y puedes verificarlo en persona.</p>
+        <p style="font-size:0.88rem;color:rgba(255,255,255,.6);margin:0">Organiza una visita a Marina I o II antes de invertir. El equipo te acompaña. Sin compromiso.</p>
+      </div>
+      <a href="#contacto" style="display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--navy);font-weight:700;font-size:0.88rem;padding:12px 22px;border-radius:8px;text-decoration:none;flex-shrink:0">Agendar visita →</a>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPO -->
+<section style="background:var(--off);padding:60px 0" id="equipo">
+  <div class="sec-inner">
+    <div class="eyebrow">El equipo</div>
+    <h2>Quién está detrás del proyecto</h2>
+    <p class="sec-lead">Dunamar es liderado por el mismo equipo que construyó los edificios Marina. Personas con nombre, con historial verificable y con edificios físicos que los respaldan.</p>
+    <div style="display:flex;gap:32px;flex-wrap:wrap;margin-top:32px;align-items:flex-start">
+      <div style="text-align:center;min-width:200px">
+        <div style="position:relative;display:inline-block">
+          <img src="foto-omar-herrera.jpg" alt="Omar Herrera — Director Constructora Ferramar"
+               style="width:180px;height:180px;border-radius:50%;object-fit:cover;border:3px solid var(--gold)"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div style="display:none;width:180px;height:180px;border-radius:50%;background:var(--navy-light);border:3px solid var(--gold);align-items:center;justify-content:center;font-size:56px">👤</div>
+        </div>
+        <p style="font-weight:700;margin-top:12px;color:var(--navy)">Omar Herrera</p>
+        <p style="font-size:0.85rem;color:var(--g500)">Director · Constructora Ferramar</p>
+        <div style="background:#fff3cd;border:2px solid #e53e3e;border-radius:8px;padding:8px 12px;margin-top:10px;font-size:0.78rem;color:#c53030;font-weight:700;line-height:1.4">
+          ⚠️ REEMPLAZAR CON FOTO REAL<br>de Omar Herrera
+        </div>
+      </div>
+      <div style="flex:1;min-width:260px">
+        <div style="background:var(--navy);color:#fff;border-radius:12px;padding:28px 28px;margin-bottom:16px">
+          <p style="font-size:1rem;line-height:1.7;margin:0"><em>"Llevamos 12 años construyendo en la V Región. Los edificios Marina I y Marina II están ahí para quien quiera verlos. Dunamar sigue exactamente el mismo modelo. Si ya construimos tres veces, podemos construir una cuarta."</em></p>
+          <p style="margin-top:14px;font-size:0.85rem;color:var(--gold)">— Omar Herrera, Director Constructora Ferramar</p>
+        </div>
+        <div style="display:flex;gap:16px;flex-wrap:wrap">
+          <div style="background:#fff;border:1px solid var(--g300);border-radius:8px;padding:14px;flex:1;min-width:120px">
+            <div style="font-size:1.6rem;font-weight:800;color:var(--navy)">12</div>
+            <div style="font-size:0.8rem;color:var(--g500)">Años en la industria</div>
+          </div>
+          <div style="background:#fff;border:1px solid var(--g300);border-radius:8px;padding:14px;flex:1;min-width:120px">
+            <div style="font-size:1.6rem;font-weight:800;color:var(--navy)">3</div>
+            <div style="font-size:0.8rem;color:var(--g500)">Edificios completados</div>
+          </div>
+          <div style="background:#fff;border:1px solid var(--g300);border-radius:8px;padding:14px;flex:1;min-width:120px">
+            <div style="font-size:1.6rem;font-weight:800;color:var(--navy)">0</div>
+            <div style="font-size:0.8rem;color:var(--g500)">Atrasos en entrega</div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;min-width:200px">
+        <div style="position:relative;display:inline-block">
+          <img src="foto-edificio-dunamar.jpg" alt="Render Proyecto Dunamar"
+               style="width:180px;height:180px;border-radius:12px;object-fit:cover;border:3px solid var(--gold)"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div style="display:none;width:180px;height:180px;border-radius:12px;background:var(--navy-light);border:3px solid var(--gold);align-items:center;justify-content:center;font-size:56px">🏢</div>
+        </div>
+        <p style="font-weight:700;margin-top:12px;color:var(--navy)">Proyecto Dunamar</p>
+        <p style="font-size:0.85rem;color:var(--g500)">Render / Foto del terreno</p>
+        <div style="background:#fff3cd;border:2px solid #e53e3e;border-radius:8px;padding:8px 12px;margin-top:10px;font-size:0.78rem;color:#c53030;font-weight:700;line-height:1.4">
+          ⚠️ REEMPLAZAR CON RENDER<br>o foto del terreno real
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUÉ CONCÓN -->
+<section style="background:var(--navy);color:#fff;padding:70px 0" id="por-que">
+  <div class="sec-inner">
+    <div class="eyebrow" style="color:var(--gold)">Por qué invertir aquí</div>
+    <h2 style="color:#fff">Concón no es solo una playa.<br><span style="color:var(--gold)">Es el mercado inmobiliario más dinámico de la V Región.</span></h2>
+    <p style="color:rgba(255,255,255,.65);max-width:700px;font-size:1.05rem;line-height:1.8;margin-bottom:40px">El valor del suelo en Concón ha subido de forma consistente en la última década. La demanda de departamentos frente al mar supera la oferta disponible — y los proyectos en Av. Costa de Montemar se agotan antes de la entrega.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-bottom:48px">
+      <div style="background:rgba(255,255,255,.07);border-radius:12px;padding:24px;border-left:3px solid var(--gold)">
+        <div style="font-size:2rem;margin-bottom:8px">📈</div>
+        <h4 style="color:var(--gold);margin-bottom:8px">Valorización del suelo</h4>
+        <p style="color:rgba(255,255,255,.7);font-size:0.9rem;line-height:1.6">El precio del m² en Concón ha crecido sostenidamente. La escasez de suelo frente al mar garantiza presión alcista permanente sobre el valor de los activos.</p>
+      </div>
+      <div style="background:rgba(255,255,255,.07);border-radius:12px;padding:24px;border-left:3px solid var(--gold)">
+        <div style="font-size:2rem;margin-bottom:8px">🌊</div>
+        <h4 style="color:var(--gold);margin-bottom:8px">Demanda estructural de vista al mar</h4>
+        <p style="color:rgba(255,255,255,.7);font-size:0.9rem;line-height:1.6">Concón concentra la segunda residencia de Viña del Mar, Santiago y del mercado regional. Los compradores de depto frente al mar están dispuestos a pagar una prima de ubicación constante.</p>
+      </div>
+      <div style="background:rgba(255,255,255,.07);border-radius:12px;padding:24px;border-left:3px solid var(--gold)">
+        <div style="font-size:2rem;margin-bottom:8px">🛣️</div>
+        <h4 style="color:var(--gold);margin-bottom:8px">Accesibilidad e infraestructura</h4>
+        <p style="color:rgba(255,255,255,.7);font-size:0.9rem;line-height:1.6">45 minutos de Viña del Mar, 20 minutos de Valparaíso. Autopista del Mar directa. La conectividad hace de Concón una opción viable para residencia permanente, no solo segunda vivienda.</p>
+      </div>
+      <div style="background:rgba(255,255,255,.07);border-radius:12px;padding:24px;border-left:3px solid var(--gold)">
+        <div style="font-size:2rem;margin-bottom:8px">🏗️</div>
+        <h4 style="color:var(--gold);margin-bottom:8px">El eje ya demostró absorción</h4>
+        <p style="color:rgba(255,255,255,.7);font-size:0.9rem;line-height:1.6">Marina I y Marina II — mismo eje, misma ecuación — se vendieron sin stock en cartera. No es una hipótesis sobre demanda: es demanda verificada en el mismo terreno.</p>
+      </div>
+      <div style="background:rgba(255,255,255,.07);border-radius:12px;padding:24px;border-left:3px solid var(--gold)">
+        <div style="font-size:2rem;margin-bottom:8px">🏖️</div>
+        <h4 style="color:var(--gold);margin-bottom:8px">Mercado de arriendo vacacional</h4>
+        <p style="color:rgba(255,255,255,.7);font-size:0.9rem;line-height:1.6">Concón tiene temporada alta extendida (nov–abr) y demanda de arriendo de largo plazo creciente. Los compradores de departamentos en el proyecto obtienen activo con doble perfil de rentabilidad: plusvalía + renta.</p>
+      </div>
+      <div style="background:rgba(255,255,255,.07);border-radius:12px;padding:24px;border-left:3px solid var(--gold)">
+        <div style="font-size:2rem;margin-bottom:8px">🛡️</div>
+        <h4 style="color:var(--gold);margin-bottom:8px">Chile: el marco legal más estable de LatAm</h4>
+        <p style="color:rgba(255,255,255,.7);font-size:0.9rem;line-height:1.6">Propiedad privada protegida constitucionalmente. Sistema registral notarial sólido. Plena libertad de inversión extranjera. Denominación en UF que indexa automáticamente a inflación. El activo real no se licua.</p>
+      </div>
+    </div>
+    <div style="background:rgba(201,168,76,.12);border:1px solid var(--gold);border-radius:12px;padding:28px;display:flex;align-items:flex-start;gap:16px">
+      <div style="font-size:2rem;flex-shrink:0">💡</div>
+      <div>
+        <strong style="color:var(--gold);font-size:1.05rem">¿Por qué ahora y no esperar?</strong>
+        <p style="color:rgba(255,255,255,.75);margin-top:8px;line-height:1.7">Cada proyecto de Ferramar se ha lanzado a inversores en etapa de terreno — cuando el precio de entrada es el más bajo del ciclo. Una vez que comienza la obra, el capital que entra es más caro porque el riesgo de ejecución ya lo asumieron los inversores anteriores. Los inversores de Marina I que entraron en etapa de terreno capturaron la mayor parte del upside. Eso es lo que está disponible ahora en Dunamar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EL PROYECTO -->
+<section class="proyecto" id="proyecto">
+  <div class="sec-inner">
+    <div class="eyebrow">El Proyecto</div>
+    <h2>Dunamar — Números completos, sin letra chica</h2>
+    <p class="sec-lead">Toda la información que un inversor necesita, visible desde el principio.</p>
+
+    <!-- BLOQUE EXPLICATIVO: LO QUE SE PIDE VS. EL PROYECTO TOTAL -->
+    <div style="background:var(--navy);border-radius:16px;padding:28px 32px;margin-bottom:36px;display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:start">
+
+      <!-- Columna izquierda: lo que se pide a inversores -->
+      <div>
+        <div style="font-size:0.68rem;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px">Rol: financista del desarrollo</div>
+        <div style="background:rgba(255,255,255,.07);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;padding:10px 14px;margin-bottom:16px;font-size:0.83rem;color:rgba(255,255,255,.8);line-height:1.6">
+          No estás comprando un departamento.<br>
+          <strong style="color:#fff">Financias el desarrollo del edificio y recibes el margen que genera — que es el precio de venta menos el costo de construir.</strong>
+        </div>
+        <div style="font-size:0.8rem;color:rgba(255,255,255,.5);margin-bottom:6px">Participación mínima en la ronda</div>
+        <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:16px">
+          <div style="font-size:2.2rem;font-weight:800;color:var(--gold);line-height:1">UF 1,000</div>
+          <div style="font-size:0.9rem;color:rgba(255,255,255,.4)">≈ USD 40K</div>
+        </div>
+        <p style="font-size:0.85rem;color:rgba(255,255,255,.65);line-height:1.7;margin:0">La ronda cubre la <strong style="color:#fff">compra del terreno</strong>. La construcción la financia el banco usando el terreno como garantía — no sale de los inversores.</p>
+        <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap">
+          <div style="background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.4);border-radius:8px;padding:8px 14px;text-align:center">
+            <div style="font-size:1.3rem;font-weight:800;color:var(--gold)">91.8%</div>
+            <div style="font-size:0.72rem;color:rgba(255,255,255,.6);margin-top:2px">ROI proyectado (en UF)</div>
+          </div>
+          <div style="background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.4);border-radius:8px;padding:8px 14px;text-align:center">
+            <div style="font-size:1.3rem;font-weight:800;color:var(--gold)">~30%</div>
+            <div style="font-size:0.72rem;color:rgba(255,255,255,.6);margin-top:2px">Retorno anualizado (UF)</div>
+          </div>
+          <div style="background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.4);border-radius:8px;padding:8px 14px;text-align:center">
+            <div style="font-size:1.3rem;font-weight:800;color:var(--gold)">~36m</div>
+            <div style="font-size:0.72rem;color:rgba(255,255,255,.6);margin-top:2px">Plazo estimado</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Separador central -->
+      <div style="width:1px;background:rgba(255,255,255,.12);margin:0 28px;align-self:stretch"></div>
+
+      <!-- Columna derecha: estructura de financiamiento -->
+      <div>
+        <div style="font-size:0.68rem;font-weight:800;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px">Cómo se financia el proyecto completo</div>
+
+        <div style="margin-bottom:14px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <span style="font-size:0.82rem;color:var(--gold);font-weight:600">① Inversores → terreno</span>
+            <span style="font-size:0.82rem;color:var(--gold);font-weight:700">[⚠️ %]</span>
+          </div>
+          <div style="height:10px;background:rgba(255,255,255,.08);border-radius:5px;overflow:hidden">
+            <div style="width:30%;height:100%;background:var(--gold);border-radius:5px"></div>
+          </div>
+          <div style="font-size:0.72rem;color:rgba(255,255,255,.4);margin-top:4px">Terreno queda inscrito a nombre del proyecto · garantía hipotecaria ante el banco</div>
+        </div>
+
+        <div style="margin-bottom:20px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <span style="font-size:0.82rem;color:rgba(255,255,255,.7);font-weight:600">② Banco → crédito constructor</span>
+            <span style="font-size:0.82rem;color:rgba(255,255,255,.7);font-weight:700">[⚠️ %]</span>
+          </div>
+          <div style="height:10px;background:rgba(255,255,255,.08);border-radius:5px;overflow:hidden">
+            <div style="width:70%;height:100%;background:rgba(255,255,255,.35);border-radius:5px"></div>
+          </div>
+          <div style="font-size:0.72rem;color:rgba(255,255,255,.4);margin-top:4px">Desembolsado por estados de pago según avance de obra · no sale de los inversores</div>
+        </div>
+
+        <div style="border-top:1px solid rgba(255,255,255,.1);padding-top:14px">
+          <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin-bottom:4px">
+            <span style="color:rgba(255,255,255,.5)">Costo total del proyecto</span>
+            <span style="color:rgba(255,255,255,.7);font-weight:700">443,054 UF ≈ USD 18.6M</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin-bottom:4px">
+            <span style="color:rgba(255,255,255,.5)">Ingresos proyectados (ventas)</span>
+            <span style="color:rgba(255,255,255,.7);font-weight:700">849,500 UF ≈ USD 35.7M</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.8rem">
+            <span style="color:rgba(255,255,255,.5)">Utilidad neta proyectada</span>
+            <span style="color:#4ade80;font-weight:700">406,445 UF ≈ USD 17.1M</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABLA DE ESPECIFICACIONES + MAPA -->
+    <div class="proy-layout">
+      <div>
+        <div style="font-size:0.72rem;font-weight:700;color:var(--g400);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--g200)">Ficha del proyecto</div>
+        <div class="num-row"><span class="k">Departamentos</span><span class="v">150 <small>unidades · 7 tipologías</small></span></div>
+        <div class="num-row"><span class="k">Pisos</span><span class="v">22 <small>+ quincho panorámico</small></span></div>
+        <div class="num-row"><span class="k">Superficie del terreno</span><span class="v">5,312 <small>m²</small></span></div>
+        <div class="num-row"><span class="k">Superficie construida</span><span class="v">12,347 <small>m²</small></span></div>
+        <div class="num-row"><span class="k">Inversión mínima para participar</span><span class="v">UF 1,000 <small>≈ USD 40K</small></span></div>
+        <div class="num-row"><span class="k">Plazo estimado</span><span class="v">~36 <small>meses desde inicio de obra</small></span></div>
+        <div style="background:#fffbeb;border:1px solid #fbbf24;border-radius:10px;padding:12px 16px;font-size:0.82rem;color:#78350f;margin-top:16px;line-height:1.6">
+          <strong>⚠️ Los porcentajes de la barra son referenciales.</strong> El desglose exacto entre capital inversor y crédito constructor queda definido con el estudio del arquitecto y la oferta bancaria. Se comunicará a los interesados antes de la firma.
+        </div>
+      </div>
+      <div>
+        <div class="map-card">
+          <div class="map-iframe-wrap">
+            <iframe
+              src="https://maps.google.com/maps?q=-32.932651,-71.54493&z=18&t=k&output=embed&hl=es"
+              allowfullscreen
+              loading="lazy"
+              title="Terreno Dunamar — Av. Costa de Montemar, Concón"
+            ></iframe>
+          </div>
+          <div class="map-body">
+            <span class="addr">Ubicación del terreno</span>
+            <h4>Av. Costa de Montemar, Concón</h4>
+            <p>A metros de Marina I y Marina II. El eje de mayor crecimiento de la costa de Valparaíso. El mercado ya absorbió proyectos idénticos del mismo equipo.</p>
+          </div>
+        </div>
+        <ul class="spec-list">
+          <li><span class="dot"></span>22 pisos + quincho panorámico con vista al Pacífico</li>
+          <li><span class="dot"></span>3 subterráneos con 100+ estacionamientos y 42+ bodegas</li>
+          <li><span class="dot"></span>Piscina temperada, gimnasio, 3 ascensores</li>
+          <li><span class="dot"></span>Sistema contra incendios certificado</li>
+          <li><span class="dot"></span>Mismo estándar que Marina I y II — ambos visitables</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESTRUCTURA DEL PROYECTO -->
+<section style="background:var(--off);padding:70px 0" id="estructura">
+  <div class="sec-inner">
+    <div class="eyebrow">Cómo está estructurado el proyecto</div>
+    <h2>Del terreno a la entrega:<br><span style="color:var(--navy)">cada paso tiene un responsable y un control.</span></h2>
+    <p class="sec-lead">No es un proyecto informal. Cada etapa tiene documentación, responsables externos y mecanismos de control independientes. Así funciona Dunamar.</p>
+
+    <!-- ETAPAS VERTICALES -->
+    <div style="display:flex;flex-direction:column;gap:0;margin:40px 0 48px">
+
+      <!-- Paso 1 -->
+      <div style="display:flex;gap:0;align-items:stretch">
+        <div style="display:flex;flex-direction:column;align-items:center;width:52px;flex-shrink:0">
+          <div style="width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--navy);font-size:0.9rem;flex-shrink:0">1</div>
+          <div style="flex:1;width:2px;background:var(--g300);margin:4px 0"></div>
+        </div>
+        <div style="background:#fff;border:1px solid var(--g300);border-radius:12px;padding:20px 24px;margin:0 0 12px 16px;flex:1">
+          <h4 style="color:var(--navy);margin-bottom:6px">📋 Informe predial — prerequisito de la inversión</h4>
+          <p style="color:var(--g700);font-size:0.92rem;line-height:1.7;margin:0">Antes de estructurar la ronda de inversión, se obtiene el <strong>informe predial municipal</strong> que certifica la capacidad constructiva del terreno. Este informe confirmó cabida para <strong>150 departamentos</strong>. Sin él, no hay deal. Es el primer documento que verás en el data room.</p>
+        </div>
+      </div>
+
+      <!-- Paso 2 -->
+      <div style="display:flex;gap:0;align-items:stretch">
+        <div style="display:flex;flex-direction:column;align-items:center;width:52px;flex-shrink:0">
+          <div style="width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--navy);font-size:0.9rem;flex-shrink:0">2</div>
+          <div style="flex:1;width:2px;background:var(--g300);margin:4px 0"></div>
+        </div>
+        <div style="background:#fff;border:1px solid var(--g300);border-radius:12px;padding:20px 24px;margin:0 0 12px 16px;flex:1">
+          <h4 style="color:var(--navy);margin-bottom:6px">🏗️ Arquitecto desarrolla proyecto para 150 unidades + áreas comunes</h4>
+          <p style="color:var(--g700);font-size:0.92rem;line-height:1.7;margin:0">Un arquitecto externo e independiente diseña el proyecto completo: 150 departamentos en 7 tipologías, más <strong>servicios comunes</strong> (lobby, gym, piscina, quincho, bodegas, estacionamientos). El arquitecto trabaja bajo contrato y sus planos son revisados por la Municipalidad para la obtención del permiso de edificación.</p>
+        </div>
+      </div>
+
+      <!-- Paso 3 -->
+      <div style="display:flex;gap:0;align-items:stretch">
+        <div style="display:flex;flex-direction:column;align-items:center;width:52px;flex-shrink:0">
+          <div style="width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--navy);font-size:0.9rem;flex-shrink:0">3</div>
+          <div style="flex:1;width:2px;background:var(--g300);margin:4px 0"></div>
+        </div>
+        <div style="background:#fff;border:1px solid var(--g300);border-radius:12px;padding:20px 24px;margin:0 0 12px 16px;flex:1">
+          <h4 style="color:var(--navy);margin-bottom:6px">💰 Ingresos: cómo se llega al total proyectado</h4>
+          <p style="color:var(--g700);font-size:0.92rem;line-height:1.7;margin:0 0 12px">Cada tipología tiene un precio de venta definido. La suma de todas las unidades más estacionamientos y bodegas da el ingreso total proyectado. Los precios se sustentan en tasaciones de mercado de Concón y en los precios observados en Marina I y II.</p>
+          <div style="overflow-x:auto">
+            <table style="width:100%;border-collapse:collapse;font-size:0.88rem">
+              <thead>
+                <tr style="background:var(--navy);color:#fff">
+                  <th style="padding:8px 12px;text-align:left;border-radius:6px 0 0 0">Tipología</th>
+                  <th style="padding:8px 12px;text-align:center">Unidades</th>
+                  <th style="padding:8px 12px;text-align:right">Precio c/u (UF)</th>
+                  <th style="padding:8px 12px;text-align:right;border-radius:0 6px 0 0">Subtotal (UF)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="background:#f8f9fa"><td style="padding:7px 12px">Tipo A · 1D+1B · 33 m²</td><td style="padding:7px 12px;text-align:center">38</td><td style="padding:7px 12px;text-align:right">2,500</td><td style="padding:7px 12px;text-align:right">95,000</td></tr>
+                <tr><td style="padding:7px 12px">Tipo B · 2D+2B · 50 m²</td><td style="padding:7px 12px;text-align:center">40</td><td style="padding:7px 12px;text-align:right">4,100</td><td style="padding:7px 12px;text-align:right">164,000</td></tr>
+                <tr style="background:#f8f9fa"><td style="padding:7px 12px">Tipos C1·C2·F · Mariposa</td><td style="padding:7px 12px;text-align:center">59</td><td style="padding:7px 12px;text-align:right">4,500–5,100</td><td style="padding:7px 12px;text-align:right">~277,500</td></tr>
+                <tr><td style="padding:7px 12px">Tipo D · 2D+2B Premium</td><td style="padding:7px 12px;text-align:center">39</td><td style="padding:7px 12px;text-align:right">5,000</td><td style="padding:7px 12px;text-align:right">195,000</td></tr>
+                <tr style="background:#f8f9fa"><td style="padding:7px 12px">Tipo E · 3D+2B · 71 m²</td><td style="padding:7px 12px;text-align:center">19</td><td style="padding:7px 12px;text-align:right">6,000</td><td style="padding:7px 12px;text-align:right">114,000</td></tr>
+                <tr style="background:#fff;border-top:2px solid var(--g300)"><td style="padding:7px 12px">Estacionamientos + Bodegas</td><td style="padding:7px 12px;text-align:center">—</td><td style="padding:7px 12px;text-align:right">Varios</td><td style="padding:7px 12px;text-align:right">~4,000</td></tr>
+                <tr style="background:var(--navy-light);color:#fff;font-weight:700"><td style="padding:9px 12px;border-radius:0 0 0 6px">TOTAL INGRESOS</td><td style="padding:9px 12px;text-align:center">150</td><td style="padding:9px 12px"></td><td style="padding:9px 12px;text-align:right;border-radius:0 0 6px 0">849,500 UF</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size:0.78rem;color:var(--g400);margin-top:8px">* Tabla referencial del estudio de factibilidad. El arquitecto validará mix y precios definitivos al desarrollar el proyecto de 150 unidades.</p>
+        </div>
+      </div>
+
+      <!-- Paso 4 -->
+      <div style="display:flex;gap:0;align-items:stretch">
+        <div style="display:flex;flex-direction:column;align-items:center;width:52px;flex-shrink:0">
+          <div style="width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--navy);font-size:0.9rem;flex-shrink:0">4</div>
+          <div style="flex:1;width:2px;background:var(--g300);margin:4px 0"></div>
+        </div>
+        <div style="background:#fff;border:1px solid var(--g300);border-radius:12px;padding:20px 24px;margin:0 0 12px 16px;flex:1">
+          <h4 style="color:var(--navy);margin-bottom:6px">🔧 Costos del proyecto — qué incluye</h4>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:8px">
+            <div style="background:var(--g100);border-radius:8px;padding:12px"><strong style="color:var(--navy);font-size:0.85rem">Ingeniería y especialidades</strong><p style="font-size:0.82rem;color:var(--g500);margin-top:4px">Cálculo estructural, instalaciones eléctricas, sanitarias, contra incendios, climatización</p></div>
+            <div style="background:var(--g100);border-radius:8px;padding:12px"><strong style="color:var(--navy);font-size:0.85rem">Permisos municipales</strong><p style="font-size:0.82rem;color:var(--g500);margin-top:4px">Permiso de edificación, recepciones parciales y final de obra, derechos de construcción</p></div>
+            <div style="background:var(--g100);border-radius:8px;padding:12px"><strong style="color:var(--navy);font-size:0.85rem">Construcción de la obra</strong><p style="font-size:0.82rem;color:var(--g500);margin-top:4px">Adjudicada a constructora mediante licitación formal con <strong>plazo y precio definidos en contrato</strong></p></div>
+            <div style="background:var(--g100);border-radius:8px;padding:12px"><strong style="color:var(--navy);font-size:0.85rem">Inspección técnica (ITO)</strong><p style="font-size:0.82rem;color:var(--g500);margin-top:4px">Empresa externa dependiente de la inmobiliaria, presente durante toda la obra. Supervisa calidad, avance y cumplimiento del contrato de construcción</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paso 5 -->
+      <div style="display:flex;gap:0;align-items:stretch">
+        <div style="display:flex;flex-direction:column;align-items:center;width:52px;flex-shrink:0">
+          <div style="width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--navy);font-size:0.9rem;flex-shrink:0">5</div>
+        </div>
+        <div style="background:#fff;border:1px solid var(--g300);border-radius:12px;padding:20px 24px;margin:0 0 0 16px;flex:1">
+          <h4 style="color:var(--navy);margin-bottom:6px">🏁 Entrega y distribución de utilidades</h4>
+          <p style="color:var(--g700);font-size:0.92rem;line-height:1.7;margin:0">La constructora adjudicada tiene un <strong>plazo contractual definido</strong> para la entrega. La inspección técnica (ITO) valida el cumplimiento en cada etapa. Al completar las ventas, las utilidades se distribuyen a los inversores según contrato. El cronograma completo y las condiciones de distribución están en el data room.</p>
+        </div>
+      </div>
+
+    </div>
+    <div style="background:var(--navy);color:#fff;border-radius:12px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start">
+      <div style="font-size:1.8rem;flex-shrink:0">🔍</div>
+      <div><strong style="color:var(--gold)">Toda esta documentación está disponible en el data room.</strong><p style="margin-top:8px;color:rgba(255,255,255,.75);line-height:1.7">Informe predial, modelo financiero con análisis de sensibilidad, planos preliminares, presupuesto de obra, estructura del contrato de construcción y condiciones para inversores. Tu abogado puede revisar todo antes de la firma. Acceso tras una conversación de 20 minutos.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUÉ EL MODELO -->
+<section style="background:#fff;padding:70px 0" id="modelo">
+  <div class="sec-inner">
+    <div class="eyebrow">Entendiendo la oportunidad</div>
+    <h2>¿Qué es exactamente esta inversión?<br><span style="font-size:0.7em;color:var(--g500);font-weight:400">No estás comprando un departamento. Estás financiando un proyecto que venderá 150 departamentos.</span></h2>
+    <p class="sec-lead">Son dos modelos completamente distintos. Comprar un departamento terminado es pagar el precio de mercado como usuario final. <strong>Invertir en el desarrollo</strong> es financiar la creación del edificio completo y capturar la utilidad de todo el proyecto — el margen que normalmente se lleva el desarrollador.</p>
+
+    <!-- COMPARACIÓN VISUAL -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:40px 0;max-width:860px">
+      <div style="background:var(--g100);border-radius:14px;padding:28px">
+        <div style="font-size:1.5rem;margin-bottom:10px">🏠</div>
+        <h4 style="color:var(--navy);font-size:1rem;margin-bottom:12px">Comprar un depto terminado</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
+          <li style="display:flex;gap:10px;font-size:0.88rem;color:var(--g700)"><span style="color:#dc2626;flex-shrink:0">✗</span>Pagas precio de mercado (el margen ya lo cobró el desarrollador)</li>
+          <li style="display:flex;gap:10px;font-size:0.88rem;color:var(--g700)"><span style="color:#dc2626;flex-shrink:0">✗</span>Retorno por arriendo: 4–5% bruto anual</li>
+          <li style="display:flex;gap:10px;font-size:0.88rem;color:var(--g700)"><span style="color:#dc2626;flex-shrink:0">✗</span>Gestionas arriendo, mantención, vacancia</li>
+          <li style="display:flex;gap:10px;font-size:0.88rem;color:var(--g700)"><span style="color:#dc2626;flex-shrink:0">✗</span>Capital inmovilizado indefinidamente</li>
+          <li style="display:flex;gap:10px;font-size:0.88rem;color:var(--g700)"><span style="color:#dc2626;flex-shrink:0">✗</span>Ticket mínimo: UF 4,000–6,000+ (precio de un depto)</li>
+        </ul>
+      </div>
+      <div style="background:var(--navy);border-radius:14px;padding:28px;border:2px solid var(--gold)">
+        <div style="font-size:1.5rem;margin-bottom:10px">🏗️</div>
+        <h4 style="color:var(--gold);font-size:1rem;margin-bottom:12px">Invertir en el desarrollo (Dunamar)</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
+          <li style="display:flex;gap:10px;font-size:0.88rem;color:rgba(255,255,255,.85)"><span style="color:#4ade80;flex-shrink:0">✓</span>Entras al precio de costo — capturas el margen completo del proyecto</li>
+          <li style="display:flex;gap:10px;font-size:0.88rem;color:rgba(255,255,255,.85)"><span style="color:#4ade80;flex-shrink:0">✓</span>Retorno proyectado: ~30% anual en UF (escenario base)</li>
+          <li style="display:flex;gap:10px;font-size:0.88rem;color:rgba(255,255,255,.85)"><span style="color:#4ade80;flex-shrink:0">✓</span>Inversión completamente pasiva — Ferramar gestiona todo</li>
+          <li style="display:flex;gap:10px;font-size:0.88rem;color:rgba(255,255,255,.85)"><span style="color:#4ade80;flex-shrink:0">✓</span>Plazo definido: ~36 meses, luego recuperas capital + retorno</li>
+          <li style="display:flex;gap:10px;font-size:0.88rem;color:rgba(255,255,255,.85)"><span style="color:#4ade80;flex-shrink:0">✓</span>Ticket mínimo: UF 1,000 — acceso a proyecto de 150 unidades</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CÓMO FUNCIONA EL MODELO -->
+    <h3 style="color:var(--navy);font-size:1.1rem;margin-bottom:20px">Cómo se crea el retorno: la lógica del negocio</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:40px">
+      <div style="text-align:center;padding:20px 16px;background:var(--g100);border-radius:12px;position:relative">
+        <div style="width:36px;height:36px;background:var(--navy);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;margin:0 auto 12px">1</div>
+        <h5 style="color:var(--navy);margin-bottom:6px;font-size:0.9rem">Comprar el terreno</h5>
+        <p style="font-size:0.8rem;color:var(--g500);line-height:1.5">Se adquiere el suelo a precio de terreno — antes de que tenga encima un edificio de 22 pisos con vista al mar</p>
+        <div style="margin-top:10px;font-size:0.75rem;font-weight:700;color:var(--gold)">Costo: fracción del valor final</div>
+      </div>
+      <div style="text-align:center;padding:20px 16px;background:var(--g100);border-radius:12px">
+        <div style="width:36px;height:36px;background:var(--navy);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;margin:0 auto 12px">2</div>
+        <h5 style="color:var(--navy);margin-bottom:6px;font-size:0.9rem">Permisos y diseño</h5>
+        <p style="font-size:0.8rem;color:var(--g500);line-height:1.5">El arquitecto diseña 150 departamentos. El municipio aprueba. El valor del suelo sube al confirmar la edificabilidad.</p>
+        <div style="margin-top:10px;font-size:0.75rem;font-weight:700;color:var(--gold)">Valor: crece con cada permiso</div>
+      </div>
+      <div style="text-align:center;padding:20px 16px;background:var(--g100);border-radius:12px">
+        <div style="width:36px;height:36px;background:var(--navy);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;margin:0 auto 12px">3</div>
+        <h5 style="color:var(--navy);margin-bottom:6px;font-size:0.9rem">Construcción y preventas</h5>
+        <p style="font-size:0.8rem;color:var(--g500);line-height:1.5">La constructora adjudicada levanta el edificio. Simultáneamente, se venden departamentos con precio de mercado.</p>
+        <div style="margin-top:10px;font-size:0.75rem;font-weight:700;color:var(--gold)">Ingresos: generados durante la obra</div>
+      </div>
+      <div style="text-align:center;padding:20px 16px;background:var(--navy);border-radius:12px;border:2px solid var(--gold)">
+        <div style="width:36px;height:36px;background:var(--gold);color:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;margin:0 auto 12px">4</div>
+        <h5 style="color:var(--gold);margin-bottom:6px;font-size:0.9rem">Entrega y retorno</h5>
+        <p style="font-size:0.8rem;color:rgba(255,255,255,.7);line-height:1.5">Se completan las ventas y se entrega el edificio. El diferencial entre costos e ingresos es la utilidad que se distribuye a inversores.</p>
+        <div style="margin-top:10px;font-size:0.75rem;font-weight:700;color:#4ade80">Tu retorno: la utilidad del proyecto</div>
+      </div>
+    </div>
+
+    <!-- ESTRUCTURA DE FINANCIAMIENTO -->
+    <h3 style="color:var(--navy);font-size:1.1rem;margin:40px 0 8px">Cómo se financia el proyecto: el rol de los inversores y el banco</h3>
+    <p style="font-size:0.9rem;color:var(--g500);margin-bottom:24px">El capital total del proyecto (UF 443K) no lo aportan solo los inversores privados. El modelo combina dos fuentes — lo que reduce el capital requerido de cada inversor y aumenta el retorno sobre el equity.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;margin-bottom:32px;border:1px solid var(--g200);border-radius:14px;overflow:hidden">
+
+      <!-- Etapa 1 -->
+      <div style="padding:24px;background:#fff;border-right:1px solid var(--g200)">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <div style="width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.8rem;flex-shrink:0">1</div>
+          <div>
+            <div style="font-size:0.7rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.05em">Ronda de inversores</div>
+            <div style="font-weight:700;color:var(--navy);font-size:0.92rem">Compra del terreno</div>
+          </div>
+        </div>
+        <p style="font-size:0.83rem;color:var(--g600);line-height:1.6;margin-bottom:12px">Los inversores aportan el capital para adquirir el terreno + financiar el diseño y los permisos de edificación. El terreno queda inscrito en el Conservador de Bienes Raíces — es la garantía real de la inversión.</p>
+        <div style="background:var(--g100);border-radius:8px;padding:10px 12px;font-size:0.8rem;color:var(--navy)"><strong>Resultado:</strong> Ferramar tiene el terreno. Con él se puede ir al banco.</div>
+      </div>
+
+      <!-- Etapa 2 -->
+      <div style="padding:24px;background:#f0f4ff;border-right:1px solid var(--g200)">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <div style="width:32px;height:32px;border-radius:50%;background:#1d4ed8;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.8rem;flex-shrink:0">2</div>
+          <div>
+            <div style="font-size:0.7rem;font-weight:700;color:#1d4ed8;text-transform:uppercase;letter-spacing:.05em">Crédito constructor bancario</div>
+            <div style="font-weight:700;color:var(--navy);font-size:0.92rem">Financiamiento de la obra</div>
+          </div>
+        </div>
+        <p style="font-size:0.83rem;color:var(--g600);line-height:1.6;margin-bottom:12px">Con el terreno como garantía hipotecaria + los permisos aprobados + un porcentaje de unidades pre-vendidas (promesas), el banco otorga un crédito de edificación que financia la construcción. Se desembolsa por estados de pago según avance de obra.</p>
+        <div style="background:#dbeafe;border-radius:8px;padding:10px 12px;font-size:0.8rem;color:#1e3a8a"><strong>Resultado:</strong> La construcción de 150 departamentos avanza sin comprometer más capital inversor.</div>
+      </div>
+
+      <!-- Etapa 3 -->
+      <div style="padding:24px;background:#fff">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <div style="width:32px;height:32px;border-radius:50%;background:#16a34a;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.8rem;flex-shrink:0">3</div>
+          <div>
+            <div style="font-size:0.7rem;font-weight:700;color:#16a34a;text-transform:uppercase;letter-spacing:.05em">Pre-ventas + Entrega</div>
+            <div style="font-weight:700;color:var(--navy);font-size:0.92rem">Los compradores finales pagan</div>
+          </div>
+        </div>
+        <p style="font-size:0.83rem;color:var(--g600);line-height:1.6;margin-bottom:12px">Los compradores de los 150 departamentos pagan su precio de mercado. Esos ingresos (UF 849,500 proyectados) saldan el crédito bancario, cubren todos los costos y generan la utilidad que se distribuye a los inversores.</p>
+        <div style="background:#dcfce7;border-radius:8px;padding:10px 12px;font-size:0.8rem;color:#14532d"><strong>Resultado:</strong> Inversores recuperan capital + retorno. El banco cobra y se retira. Proyecto cerrado.</div>
+      </div>
+
+    </div>
+    <div style="background:#fffbeb;border:1px solid #fbbf24;border-radius:10px;padding:14px 18px;font-size:0.85rem;color:#78350f;margin-bottom:40px;line-height:1.6">
+      <strong>⚠️ Nota sobre los montos por etapa:</strong> El desglose exacto entre capital inversor y crédito constructor será definido con el estudio del arquitecto y la oferta bancaria (actualmente en desarrollo). Los UF 443,054 representan el <em>costo total del proyecto</em>. El capital que los inversores deben aportar efectivamente es la porción correspondiente al terreno y los gastos de pre-desarrollo — no la totalidad.
+    </div>
+
+    <!-- LA MATEMÁTICA SIMPLE -->
+    <div style="background:var(--gold-pale,#f7f0dd);border-radius:14px;padding:28px 32px;border-left:4px solid var(--gold)">
+      <h4 style="color:var(--navy);margin-bottom:16px;font-size:1rem">La matemática en términos simples</h4>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:16px">
+        <div style="text-align:center"><div style="font-size:1.5rem;font-weight:800;color:var(--navy)">UF 443K</div><div style="font-size:0.8rem;color:var(--g500)">Costo total del proyecto</div></div>
+        <div style="text-align:center;font-size:1.5rem;color:var(--g400);display:flex;align-items:center;justify-content:center">→</div>
+        <div style="text-align:center"><div style="font-size:1.5rem;font-weight:800;color:var(--navy)">UF 849K</div><div style="font-size:0.8rem;color:var(--g500)">Ingresos por venta de 150 deptos</div></div>
+        <div style="text-align:center;font-size:1.5rem;color:var(--g400);display:flex;align-items:center;justify-content:center">→</div>
+        <div style="text-align:center"><div style="font-size:1.5rem;font-weight:800;color:var(--green)">UF 406K</div><div style="font-size:0.8rem;color:var(--g500)">Utilidad neta proyectada</div></div>
+      </div>
+      <p style="font-size:0.85rem;color:var(--g700);line-height:1.7;margin:0">El comprador de un departamento terminado paga el precio de venta de mercado — es decir, ya incluye este margen. El inversor del proyecto lo captura directamente. Esa es la diferencia estructural entre ser <em>comprador</em> y ser <em>financista del desarrollo</em>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARATIVA -->
+<section class="comparativa" id="comparativa">
+  <div class="sec-inner">
+    <div class="eyebrow">Por qué Dunamar vs. otras alternativas</div>
+    <h2>Dónde más puedes poner tu capital a trabajar</h2>
+    <p class="sec-lead">Una comparación honesta. No vendemos el proyecto ocultando las alternativas — las mostramos para que veas por qué este deal tiene sentido.</p>
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="col-alt">Depósito a plazo</th>
+          <th class="col-alt">Depto en arriendo</th>
+          <th class="col-alt">Fondo mutuo</th>
+          <th class="col-dunamar">Proyecto Dunamar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Retorno anual estimado</td>
+          <td class="col-alt worse">4–6% nominal</td>
+          <td class="col-alt worse">4–6% bruto sobre activo</td>
+          <td class="col-alt worse">6–10% variable</td>
+          <td class="col-dunamar">~30% anual en UF</td>
+        </tr>
+        <tr>
+          <td>Protección contra inflación</td>
+          <td class="col-alt worse">Parcial (nominal)</td>
+          <td class="col-alt worse">Parcial</td>
+          <td class="col-alt worse">No garantizada</td>
+          <td class="col-dunamar better">Sí — 100% en UF</td>
+        </tr>
+        <tr>
+          <td>Respaldo tangible</td>
+          <td class="col-alt worse">Banco (nominal)</td>
+          <td class="col-alt worse">El mismo depto</td>
+          <td class="col-alt worse">Activos financieros</td>
+          <td class="col-dunamar better">Terreno físico 5,312 m²</td>
+        </tr>
+        <tr>
+          <td>Gestión requerida</td>
+          <td class="col-alt">Ninguna</td>
+          <td class="col-alt worse">Alta (arrendatarios)</td>
+          <td class="col-alt">Baja</td>
+          <td class="col-dunamar better">Ninguna — pasivo total</td>
+        </tr>
+        <tr>
+          <td>Track record del vehículo</td>
+          <td class="col-alt">Alta — institución</td>
+          <td class="col-alt worse">Depende del activo</td>
+          <td class="col-alt worse">Variable</td>
+          <td class="col-dunamar better">3 edificios entregados · 12 años</td>
+        </tr>
+        <tr>
+          <td>Monto mínimo</td>
+          <td class="col-alt">Cualquiera</td>
+          <td class="col-alt worse">Alto (compra depto)</td>
+          <td class="col-alt">Bajo</td>
+          <td class="col-dunamar">UF 1,000 (~USD 40K)</td>
+        </tr>
+        <tr>
+          <td>Disponible para extranjeros</td>
+          <td class="col-alt worse">Solo con RUT</td>
+          <td class="col-alt worse">Proceso complejo</td>
+          <td class="col-alt worse">Limitado</td>
+          <td class="col-dunamar better">Sí — 100% remoto</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- RETORNO -->
+<section class="retorno" id="retorno">
+  <div class="sec-inner">
+    <div class="eyebrow">El retorno en detalle</div>
+    <h2>Cómo se estructura el retorno</h2>
+    <p class="sec-lead">La UF no es solo una moneda: es protección real contra la inflación mientras el capital trabaja en un activo físico de alta demanda.</p>
+    <div class="ret-grid">
+      <div class="ret-card">
+        <div class="ri">📈</div>
+        <span class="rn">91.8%</span>
+        <span class="rl">ROI total en UF</span>
+        <p class="rd">Retorno real indexado a inflación sobre el ciclo completo del proyecto.</p>
+      </div>
+      <div class="ret-card">
+        <div class="ri">📅</div>
+        <span class="rn">~30%</span>
+        <span class="rl">Anualizado en UF</span>
+        <p class="rd">Equivalente anual. Comparar: depósito a plazo chileno rinde 4–6% nominal.</p>
+      </div>
+      <div class="ret-card">
+        <div class="ri">🛡️</div>
+        <span class="rn">UF</span>
+        <span class="rl">Moneda de inversión</span>
+        <p class="rd">Ajuste diario con IPC. Tu capital mantiene poder adquisitivo real desde el día uno.</p>
+      </div>
+    </div>
+    <div class="ret-note">
+      <span class="ni">⚠️</span>
+      <div><strong>Sobre los riesgos:</strong> Toda inversión en desarrollo inmobiliario conlleva riesgos: atrasos en construcción, variaciones en precio de venta de unidades, cambios de mercado. Lo que reduce ese riesgo en Dunamar es el track record del mismo equipo en el mismo eje: Marina I y Marina II siguieron exactamente este mismo camino — compra del terreno, permisos, construcción, entrega. Puedes visitarlos hoy. Te entregamos el análisis de sensibilidad completo en el data room.</div>
+    </div>
+    <div style="margin-top:40px">
+      <div class="eyebrow" style="margin-bottom:20px">Línea de tiempo de la inversión</div>
+      <div class="timeline-bar">
+        <div class="tl-step">
+          <span class="ts-num">Hoy</span>
+          <span class="ts-label">Firma de contrato · Transferencia a cuenta dedicada del proyecto</span>
+        </div>
+        <div class="tl-step" style="background:#fdf8ec;border-color:var(--gold)">
+          <span class="ts-num" style="color:var(--gold)">Mes 1</span>
+          <span class="ts-label"><strong style="color:var(--navy)">Compra del terreno</strong> · Activo físico adquirido — respaldo tangible de la inversión desde el día 1</span>
+        </div>
+        <div class="tl-step">
+          <span class="ts-num">Mes 2–6</span>
+          <span class="ts-label">Tramitación de permisos · Pre-venta de unidades</span>
+        </div>
+        <div class="tl-step">
+          <span class="ts-num">Mes 6–30</span>
+          <span class="ts-label">Construcción activa · Reportes mensuales · Ventas</span>
+        </div>
+        <div class="tl-step">
+          <span class="ts-num">Mes 30–36</span>
+          <span class="ts-label">Entrega de unidades · Recuperación de capital + retorno</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UNIDADES -->
+<section class="unidades" id="unidades">
+  <div class="sec-inner">
+    <div class="eyebrow">Mix de unidades</div>
+    <h2>150 departamentos — siete tipologías</h2>
+    <p class="sec-lead">El mix de unidades está diseñado para maximizar la velocidad de absorción (venta) y el precio por m². Son los departamentos que Ferramar <em>construirá y venderá</em> a compradores finales — generando los ingresos del proyecto.</p>
+    <div style="background:#dbeafe;border:2px solid #3b82f6;border-radius:10px;padding:14px 18px;margin-bottom:24px;display:flex;gap:12px;align-items:flex-start">
+      <span style="font-size:1.2rem;flex-shrink:0">ℹ️</span>
+      <div style="font-size:0.87rem;color:#1e3a5f;line-height:1.7"><strong>Nota para el inversor:</strong> Como inversor en Dunamar, <strong>no estás comprando ninguno de estos departamentos</strong>. Tu inversión financia el desarrollo completo del proyecto. Los precios indicados son los precios de venta al comprador final de cada unidad — es la suma de todas esas ventas lo que genera el ingreso total de UF 849,500, que luego da origen al retorno proyectado sobre tu inversión.</div>
+    </div>
+    <div class="u-grid">
+      <div class="u-card"><div class="tipo">Tipo A</div><h4>1D + 1B</h4><div class="sup">33.24 m² · 38 unidades</div><div class="u-div"></div><div class="u-row"><span class="uk">Precio venta final</span><span class="uv">2,500 UF</span></div><div class="u-row"><span class="uk">Comprador target</span><span class="uv">Inversionista arriendo</span></div></div>
+      <div class="u-card"><div class="tipo">Tipo B</div><h4>2D + 2B</h4><div class="sup">50.18 m² · 40 unidades</div><div class="u-div"></div><div class="u-row"><span class="uk">Precio venta final</span><span class="uv">4,100 UF</span></div><div class="u-row"><span class="uk">Comprador target</span><span class="uv">Familia / Arriendo</span></div></div>
+      <div class="u-card"><div class="tipo">Tipo D</div><h4>2D + 2B Premium</h4><div class="sup">57.67 m² · 39 unidades</div><div class="u-div"></div><div class="u-row"><span class="uk">Precio venta final</span><span class="uv">5,000 UF</span></div><div class="u-row"><span class="uk">Comprador target</span><span class="uv">2ª residencia</span></div></div>
+      <div class="u-card"><div class="tipo">Tipo E</div><h4>3D + 2B</h4><div class="sup">71.18 m² · 19 unidades</div><div class="u-div"></div><div class="u-row"><span class="uk">Precio venta final</span><span class="uv">6,000 UF</span></div><div class="u-row"><span class="uk">Comprador target</span><span class="uv">Residencia premium</span></div></div>
+      <div class="u-card"><div class="tipo">Tipos C1 · C2 · F</div><h4>2D + 2B Mariposa</h4><div class="sup">50–61 m² · 59 unidades</div><div class="u-div"></div><div class="u-row"><span class="uk">Precio venta final</span><span class="uv">4,500–5,100 UF</span></div><div class="u-row"><span class="uk">Característica</span><span class="uv">Terraza dividida</span></div></div>
+      <div class="u-total">
+        <div><h4>Total del proyecto</h4><p>7 tipologías · 150 departamentos + estacionamientos, bodegas y áreas comunes</p></div>
+        <div class="tot">849,500 UF</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AMENIDADES -->
+<section class="amenidades" id="amenidades">
+  <div class="sec-inner">
+    <div class="eyebrow">Amenidades</div>
+    <h2>El estándar de Marina, replicado en Dunamar</h2>
+    <p class="sec-lead">Las imágenes a continuación son de Marina I — construido por Ferramar. Dunamar tendrá exactamente este estándar. Puedes visitarlo antes de invertir.</p>
+    <div class="amen-mosaic">
+      <div class="mi tall">
+        <img src="Proyecto Inmobiliaria/PRESENTACION DE OBRAS/Marina I/Fotos/TERRAZA/2.jpg" alt="Terraza + Gimnasio con vista al mar" loading="lazy">
+        <div class="cap">Terraza + Gimnasio — Vista al mar</div>
+      </div>
+      <div class="mi">
+        <img src="Proyecto Inmobiliaria/PRESENTACION DE OBRAS/Marina I/Fotos/GIMNASIO/1.jpg" alt="Gimnasio interior" loading="lazy">
+        <div class="cap">Gimnasio equipado</div>
+      </div>
+      <div class="mi">
+        <img src="Proyecto Inmobiliaria/PRESENTACION DE OBRAS/Marina I/Fotos/ENTRADA EDIFICIO/1.jpg" alt="Lobby principal" loading="lazy">
+        <div class="cap">Lobby de acceso</div>
+      </div>
+    </div>
+    <div class="amen-list">
+      <div class="ai"><div class="ai-icon">🏊</div><div><h4>Piscina temperada</h4><p>Uso todo el año</p></div></div>
+      <div class="ai"><div class="ai-icon">💪</div><div><h4>Gimnasio</h4><p>Vista panorámica al Pacífico</p></div></div>
+      <div class="ai"><div class="ai-icon">🌅</div><div><h4>Quincho panorámico</h4><p>Piso 22 · vista 360°</p></div></div>
+      <div class="ai"><div class="ai-icon">🚗</div><div><h4>100+ estacionamientos</h4><p>3 niveles subterráneos</p></div></div>
+      <div class="ai"><div class="ai-icon">🛗</div><div><h4>3 ascensores</h4><p>Espera &lt;45 segundos</p></div></div>
+      <div class="ai"><div class="ai-icon">🔥</div><div><h4>Sistema contra incendios</h4><p>Detección automática</p></div></div>
+      <div class="ai"><div class="ai-icon">📦</div><div><h4>42+ bodegas</h4><p>Unidades individuales</p></div></div>
+      <div class="ai"><div class="ai-icon">🌿</div><div><h4>Áreas comunes</h4><p>Jardines y lobby</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- INVERSORES DEL EXTERIOR -->
+<section class="exterior" id="exterior">
+  <div class="sec-inner">
+    <div class="eyebrow" style="color:var(--gold)">Para inversores del exterior</div>
+    <h2>Inviertes desde donde estés — 100% remoto</h2>
+    <p class="sec-lead" style="color:rgba(255,255,255,.55)">Para chilenos en España, EEUU, Australia y para inversores de México, Colombia, Perú. El proceso está completamente diseñado para operar a distancia.</p>
+    <div class="ext-grid">
+      <div class="ext-item">
+        <div class="ei-icon">✍️</div>
+        <h4>Firma electrónica</h4>
+        <p>El contrato se firma de forma digital con validez legal en Chile. No necesitas viajar ni estar físicamente presente en ningún momento del proceso.</p>
+        <span class="ei-tag">Disponible desde cualquier país</span>
+      </div>
+      <div class="ext-item">
+        <div class="ei-icon">💸</div>
+        <h4>Transferencia internacional</h4>
+        <p>Puedes transferir en USD, EUR o CLP directamente a la cuenta del proyecto. Te damos los datos bancarios y el proceso de remesa es estándar y legal.</p>
+        <span class="ei-tag">USD · EUR · CLP</span>
+      </div>
+      <div class="ext-item">
+        <div class="ei-icon">📊</div>
+        <h4>Reportes mensuales digitales</h4>
+        <p>Recibes reporte mensual por email con fotos de avance de obra, estado de ventas y movimientos de la cuenta. Todo en línea, todo documentado.</p>
+        <span class="ei-tag">Email + WhatsApp</span>
+      </div>
+      <div class="ext-item">
+        <div class="ei-icon">🏛️</div>
+        <h4>Marco legal chileno sólido</h4>
+        <p>Chile tiene el marco legal más estable de América Latina para inversión extranjera en real estate. Plena libertad de remesar utilidades y sin restricciones para inversores no residentes.</p>
+        <span class="ei-tag">Inversión extranjera bienvenida</span>
+      </div>
+    </div>
+    <div style="margin-top:36px;padding:24px 28px;background:rgba(255,255,255,.07);border-radius:12px;border:1px solid rgba(201,168,76,.3);display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+      <div style="font-size:2rem;flex-shrink:0">📄</div>
+      <div style="flex:1;min-width:220px">
+        <p style="color:#fff;font-weight:700;margin-bottom:6px">¿Eres de México, Colombia, España, EEUU u otro país?</p>
+        <p style="color:rgba(255,255,255,.6);font-size:0.88rem;line-height:1.6;margin:0">Preparamos una <strong style="color:var(--gold)">Guía Completa para el Inversor Internacional</strong> con todo lo que necesitas saber: marco legal chileno, cómo funciona la UF, proceso de firma remota, impuestos para no residentes, cómo repatriar utilidades y comparativa Chile vs. otros mercados de LatAm.</p>
+      </div>
+      <a href="guia-inversor-internacional.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--navy);font-weight:700;font-size:0.85rem;padding:12px 22px;border-radius:8px;text-decoration:none;white-space:nowrap;flex-shrink:0">Ver la guía →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SEGURIDAD -->
+<section class="seguridad" id="seguridad">
+  <div class="sec-inner">
+    <div class="eyebrow">Garantías para el inversor</div>
+    <h2>¿Cómo está protegida tu inversión?</h2>
+    <p class="sec-lead">Esta pregunta tiene respuesta concreta. No hay promesas vagas: solo mecanismos documentados y verificables.</p>
+    <div class="seg-grid">
+      <div class="seg-item"><div class="seg-n">1</div><div><h3>Contrato notarial</h3><p>El deal está estructurado con contrato notarial. Condiciones, plazos y retorno por escrito antes de transferir un peso. Tu abogado lo revisa sin apuro.</p></div></div>
+      <div class="seg-item"><div class="seg-n">2</div><div><h3>El terreno: primer hito con tu capital</h3><p>La primera ronda de inversión fondea la compra del terreno de 5,312 m² en Av. Costa de Montemar — el mismo proceso que seguimos con Marina I y Marina II. Una vez adquirido, el terreno es el activo físico que respalda la inversión. Tasación del lote disponible en el data room.</p></div></div>
+      <div class="seg-item"><div class="seg-n">3</div><div><h3>Edificios previos visitables</h3><p>Marina I y Marina II están terminados y habitados a metros del terreno Dunamar. Organiza una visita antes de decidir. No hay prueba más fuerte que un edificio físico.</p></div></div>
+      <div class="seg-item"><div class="seg-n">4</div><div><h3>Cuenta dedicada del proyecto</h3><p>Los fondos se administran en cuenta bancaria separada, destinada exclusivamente al proyecto, con liberación por hitos de construcción verificables.</p></div></div>
+      <div class="seg-item"><div class="seg-n">5</div><div><h3>Reporte mensual de avance</h3><p>Todos los inversores reciben reporte mensual: fotos de obra, estado de ventas, movimiento de la cuenta. Transparencia total desde el día uno.</p></div></div>
+      <div class="seg-item"><div class="seg-n">6</div><div><h3>Historial sin atrasos</h3><p>El mismo equipo entregó Mar Caspio (2016), Marina I y Marina II — tres edificios completados en 12 años de operación — sin atrasos en ninguno de ellos.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="video-sec" id="video">
+  <div class="sec-inner" style="text-align:center;margin-bottom:32px">
+    <div class="eyebrow" style="justify-content:center">El proyecto en video</div>
+    <h2>Mira el terreno, los edificios<br>y al equipo en persona</h2>
+    <p class="sec-lead" style="margin:0 auto">Un recorrido en video por el terreno Dunamar y los edificios Marina I y Marina II — para que veas con tus propios ojos lo que tu inversión financia.</p>
+  </div>
+  <div class="video-box" style="max-width:720px;margin:0 auto" id="video-box">
+    <!-- CUANDO EL VIDEO ESTÉ LISTO: reemplaza todo este bloque por:
+         <iframe width="100%" style="aspect-ratio:16/9;display:block" src="https://www.youtube.com/embed/TU_ID_AQUI" frameborder="0" allowfullscreen></iframe>
+    -->
+    <div class="video-placeholder" style="cursor:default">
+      <div class="play-btn" style="opacity:.4;cursor:default">▶</div>
+      <h3>Video presentación del proyecto</h3>
+      <p>Recorrido por el terreno Dunamar + edificios Marina terminados + presentación del equipo · ~4 minutos</p>
+      <div style="position:relative;z-index:1;margin-top:8px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.5);border-radius:8px;padding:8px 18px;font-size:0.78rem;color:var(--gold);font-weight:600">
+        🎬 En producción — disponible próximamente
+      </div>
+    </div>
+    <div class="video-box-footer">
+      <span>📹 Mientras tanto, organiza una visita presencial a Marina I y II</span>
+      <a href="#contacto">Agendar visita →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="sec-inner">
+    <div class="eyebrow">Preguntas frecuentes</div>
+    <h2>Las preguntas que todos hacen,<br>respondidas antes de que las hagas</h2>
+    <p class="sec-lead">Si tienes alguna que no está aquí, la responderemos en la llamada inicial.</p>
+    <div class="faq-grid">
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span>¿Cuánto es la inversión mínima para participar?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-a">La inversión mínima es UF 1,000, equivalente a aproximadamente USD 40,000 o €37,000 al tipo de cambio actual. No hay un máximo establecido — para inversiones más grandes se estructura el deal de forma personalizada.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span>¿Cómo está estructurado legalmente el deal?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-a">La estructura del deal (mutuo con interés en UF, participación en las utilidades del proyecto, o promesa de compraventa sobre unidades) se define en la conversación inicial según el perfil del inversor. Todas las modalidades implican contrato notarial y están documentadas. Tu abogado puede revisarlo antes de firmar.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span>¿Cuándo recupero mi capital y recibo el retorno?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-a">El plazo estimado del proyecto es ~36 meses desde el inicio. La recuperación ocurre conforme se venden y entregan los departamentos del proyecto. Se entrega un cronograma de pagos estimado antes de la firma. En algunos estructuras se pueden pactar pagos intermedios.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span>¿Qué pasa si no se venden todos los departamentos?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-a">El modelo financiero del proyecto tiene margen: incluso vendiendo el 75% de las unidades al precio proyectado, el proyecto sigue siendo rentable. Marina I y Marina II, en el mismo eje, tuvieron alta absorción. El data room incluye el análisis de sensibilidad completo.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span>¿Puedo invertir desde el exterior? ¿Cómo funciona?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-a">Sí, absolutamente. El proceso es 100% digital: reunión por video, contrato firmado electrónicamente, transferencia en USD/EUR/CLP directamente a la cuenta del proyecto. Reportes mensuales por email. Chile tiene plena libertad de inversión extranjera y remesa de utilidades. No necesitas RUT chileno para participar.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span>¿Puedo visitar los edificios Marina antes de decidir?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-a">Sí, organizamos visitas al Edificio Marina I o Marina II en Av. Costa de Montemar con guía del equipo. También puedes ver el terreno Dunamar. Las visitas se coordinan luego de la llamada inicial, sin ningún compromiso.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span>¿Qué documentos puedo revisar antes de decidir?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-a">Tras la llamada inicial tienes acceso completo al data room: modelo financiero del proyecto, análisis de sensibilidad, tasación del terreno, permisos municipales, contratos de proyectos anteriores, y documentación legal. Tu abogado puede revisar todo sin plazos.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span>¿Cuál es el primer paso concreto?</span><div class="faq-toggle">+</div></div>
+        <div class="faq-a">Completa el formulario de abajo. En menos de 24 horas hábiles te llama un miembro del equipo Ferramar. La llamada dura 20 minutos y sirve para que puedas hacer todas las preguntas que quieras. Sin compromiso, sin presión.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="cta-sec" id="contacto">
+  <div class="sec-inner">
+    <div class="cta-layout">
+      <div class="cta-left">
+        <div class="eyebrow">¿Te interesa invertir?</div>
+        <h2>El primer paso<br>es una conversación</h2>
+        <div class="urgency-tag">🔴 Ronda de inversión abierta — cupos limitados por etapa</div>
+        <p>Sin compromiso. En 24 horas te llama el equipo. 20 minutos para resolver todas tus dudas y ver si el proyecto calza con lo que buscas.</p>
+        <ul class="cta-perks">
+          <li>Deck completo del proyecto + modelo financiero detallado</li>
+          <li>Acceso al data room completo (permisos, tasaciones, contratos)</li>
+          <li>Visita coordinada a Marina I o II en la semana que elijas</li>
+          <li>Tiempo sin límite para que tu abogado revise los documentos</li>
+          <li>Sin presión — la decisión es tuya con toda la información</li>
+        </ul>
+        <div class="ext-note">
+          <span class="en-icon">✈️</span>
+          <div><strong>¿Inviertes desde el exterior?</strong> Indica tu país en el formulario. El proceso es 100% digital — llamada por Zoom, firma electrónica, transferencia internacional. Sin necesidad de viajar.</div>
+        </div>
+      </div>
+      <div>
+        <div class="cta-form">
+          <h3>Solicitar información</h3>
+          <div class="sub">El equipo se contacta en menos de 24 horas hábiles</div>
+          <form id="contactForm">
+            <div class="fg"><label>Nombre completo</label><input type="text" placeholder="Tu nombre" required></div>
+            <div class="fg"><label>Email</label><input type="email" placeholder="tu@email.com" required></div>
+            <div class="fg"><label>Teléfono / WhatsApp</label><input type="tel" placeholder="+56 9 XXXX XXXX o +34 6XX XXX XXX"></div>
+            <div class="fg"><label>País donde resides</label>
+              <select>
+                <option value="" disabled selected>Selecciona tu país</option>
+                <option>Chile</option><option>España</option><option>Estados Unidos</option>
+                <option>México</option><option>Colombia</option><option>Perú</option>
+                <option>Argentina</option><option>Australia</option><option>Otro</option>
+              </select>
+            </div>
+            <div class="fg"><label>Monto de inversión que estás considerando</label>
+              <select required>
+                <option value="" disabled selected>Selecciona un rango</option>
+                <option>UF 1,000–3,000 (~USD 40K–120K)</option>
+                <option>UF 3,000–8,000 (~USD 120K–320K)</option>
+                <option>UF 8,000–20,000 (~USD 320K–800K)</option>
+                <option>Más de UF 20,000 (~USD 800K+)</option>
+                <option>Prefiero conversarlo directamente</option>
+              </select>
+            </div>
+            <button type="submit" class="form-submit">Enviar — me contactan en 24 horas</button>
+            <p class="form-note">Sin compromiso. Tu información es confidencial y no será compartida.</p>
+          </form>
+          <div class="form-success" id="formSuccess">
+            <h4>¡Gracias por tu interés!</h4>
+            <p>El equipo de Ferramar se contactará contigo en menos de 24 horas.<br>Revisa tu email y WhatsApp.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-inner">
+    <div class="ft-brand"><div class="name">Constructora Ferramar</div><div class="sub">Proyecto Dunamar · Av. Costa de Montemar, Concón · V Región</div></div>
+    <div class="ft-info"><p><a href="mailto:contacto@cferramar.cl">contacto@cferramar.cl</a><br>+56 32 212 6537<br>Viña del Mar, Región de Valparaíso, Chile</p></div>
+  </div>
+  <div class="ft-legal">Los retornos indicados son proyecciones basadas en el modelo financiero del proyecto y no constituyen garantía de resultados. Toda inversión en desarrollo inmobiliario conlleva riesgos. Se recomienda revisión por asesor legal independiente. © 2025 Constructora Ferramar Limitada · www.cferramar.cl</div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+const floatCta=document.getElementById('floatCta');
+window.addEventListener('scroll',()=>{
+  const s=window.scrollY>60;
+  nav.classList.toggle('scrolled',s);
+  floatCta.classList.toggle('visible',window.scrollY>window.innerHeight*.6);
+});
+
+document.getElementById('contactForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  this.style.display='none';
+  document.getElementById('formSuccess').style.display='block';
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
+  });
+});
+
+function toggleFaq(el){
+  const open=el.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!open)el.classList.add('open');
+}
+
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}
+  });
+},{rootMargin:'-5% 0px'});
+document.querySelectorAll('.tn,.ret-card,.u-card,.seg-item,.ext-item,.paso').forEach(el=>{
+  el.style.opacity='0';el.style.transform='translateY(18px)';el.style.transition='opacity .45s ease, transform .45s ease';
+  io.observe(el);
+});
+</script>
+</body>
+</html>
